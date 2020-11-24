@@ -1,0 +1,39 @@
+.carouselExampleControls
+{
+  background-color: #fff;
+}
+
+/* .carousel-item img
+{
+  width: 300px;
+  height: 300px;
+} */
+
+
+.carousel-control-prev ,
+.carousel-control-next
+{
+  z-index: 4;
+}
+/* Small devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 600px) {
+  .CircleBox .title
+  {
+    font-size: 13px;
+  }
+  .CircleBox .body
+  {
+    font-size: 10px;
+  }
+  .CircleBox
+  {
+    margin: 0 !important;
+    box-shadow: 1px 1px 1px #00000059 , -1px -1px 1px #00000059 ;
+  }
+  .carousel-item ,  .OfferContainer
+  {
+    padding: 0px !important;
+  }
+
+
+}

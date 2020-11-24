@@ -1,0 +1,21 @@
+<div class="container mt-5 mb-5 pl-3">
+  <div class="BreadCrumbs">
+    <nav>
+      <p><a>Customer Service </a></p>
+      <p class="mt-1">
+        <a routerLink="customer-service/FAQ">
+          <i class="fas fa-chevron-right"></i> &nbsp;FAQs
+        </a>
+      </p>
+    </nav>
+  </div>
+  <div *ngFor="let faq of faqs">
+    <h3>{{ faq.title }}</h3>
+    <div *ngFor="let detail of faq.details">
+      <h4>Q. {{ detail.question }}</h4>
+      <p>
+        {{ detail.answer }}
+      </p>
+    </div>
+  </div>
+</div>

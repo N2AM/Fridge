@@ -1,0 +1,23 @@
+#--form-cash {
+  & > div {
+    margin-bottom: 1rem;
+  }
+}
+.--main-btn {
+  width: 48%;
+}
+.btn-submit {
+  text-align: right;
+}
+@media only screen and (max-width: 768px) {
+  .--main-btn {
+    width: 100%;
+  }
+  .btn-submit {
+    text-align: center;
+  }
+}
+
+.--field-error-container {
+  bottom: unset !important;
+}

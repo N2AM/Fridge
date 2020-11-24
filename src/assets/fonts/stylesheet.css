@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'DINEngschrift LT Alternate';
+    src: url('DINEngschriftLT-Alternate.woff2') format('woff2'),
+        url('DINEngschriftLT-Alternate.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+

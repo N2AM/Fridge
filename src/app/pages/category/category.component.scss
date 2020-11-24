@@ -1,0 +1,37 @@
+.CarousalContainer
+{
+    @media (max-width: 425px){
+        overflow-y: hidden;
+        padding: 10px;
+        width: 90%;
+
+        #--category-carousel {
+            padding: 0rem 2rem !important;
+        }
+
+        .--slider--image-details {
+            margin-bottom: 0rem !important;
+        }
+
+        .MultiCarousel {
+            padding: 0rem;
+        }
+    }
+}
+
+#--carousel-buttons {
+    @media (max-width: 767px) {
+        display: none;
+    }
+}
+
+.--slider--image-details {
+    @media (max-width: 425px){
+        h6 {
+            font-size: 1rem !important;
+        }
+        a {
+            font-size: 20px;
+        }
+    }
+}

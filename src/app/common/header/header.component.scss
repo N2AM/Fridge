@@ -1,0 +1,448 @@
+@import "../../../assets/scss/colors";
+
+#--navbar {
+  display: flex !important;
+  padding: 0rem !important;
+  justify-content: space-between;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  position: fixed;
+  transition: 0.3s background-color ease-in-out;
+
+  .Navbar-right-icon {
+    display: flex !important;
+    justify-content: flex-start;
+    position: relative;
+    top: 0rem;
+
+    .--menu-bars-container {
+      background-color: $grey;
+    }
+
+    @media (max-width: 768px) {
+      display: none !important;
+    }
+    & > div {
+      // Icons on the right of navbar.
+      // padding: 1rem 2rem;
+      height: 73px;
+      width: 80px;
+    }
+  }
+
+  #navbarSupportedContent {
+    @media screen and (max-width: 768px) {
+      display: none;
+    }
+    & > ul.navbar-nav {
+      display: flex;
+      flex-direction: row;
+      .nav-link {
+        font-size: 21px;
+        margin-right: 1rem;
+        letter-spacing: 0px;
+        padding: 0rem !important;
+      }
+    }
+  }
+}
+// Cart total items.
+.ShoppingCartTab {
+  position: relative;
+
+  #--cart-total-number {
+    background: $light-color;
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    border-radius: 50%;
+    top: 13px;
+    left: 31px;
+    font-size: 10px;
+  }
+}
+
+.--menu-tap {
+  position: relative;
+
+  // #--menu-dropdown{
+  //     position: absolute;
+  //     background: white;
+  //     border-radius: 8px;
+  //     text-align: center;
+  //     @media (min-width: 992px){
+  //         width: 173px;
+  //         top: 60px;
+  //         right: 19px;
+  //     }
+
+  //     #--menu-dropdown-ul {
+  //         padding: 0rem;
+  //         margin: 1rem 0rem;
+
+  //         li {
+  //             width: 100%;
+  //         }
+  //     }
+
+  //     #--menu-dropdown-signup {
+  //         list-style: none;
+  //         padding:0;
+  //         margin:1rem 0rem;
+  //         .--register-button {
+  //             background: transparent;
+  //             border:none;
+  //             text-decoration: underline;
+  //             color: $main-color;
+  //             cursor: pointer;
+  //             font-size: 1.2rem;
+  //             outline:none;
+  //         }
+  //     }
+  // }
+}
+.dropdown:hover > .dropdown-menu {
+  display: block;
+}
+.dropdown-menu > li > a {
+  display: block;
+  padding: 3px 20px;
+  clear: both;
+  font-weight: 400;
+  line-height: 1.42857143;
+  white-space: nowrap;
+}
+.dropdown-submenu ul a {
+  color: #000;
+}
+.dropdown-submenu ul a:hover {
+  color: #657c92;
+}
+
+#--navbar
+  > div.row.d-none.d-lg-inline-block.Navbar-right-icon
+  > div.nav-item.dropdown
+  > a.dropdown-toggle::after {
+  display: none;
+}
+.dropdown-submenu > a:hover:after {
+  display: none;
+}
+.dropdown-submenu > a {
+  display: flex !important;
+  justify-content: space-between;
+  color: #000 !important;
+}
+.dropdown-menu .dropdown > a {
+  color: #000 !important;
+}
+.dropdown-menu .dropdown > a:hover {
+  color: #f15758 !important;
+}
+.dropdown-menu a:hover {
+  text-decoration: none;
+}
+.multi-level li:hover {
+  background-color: #e8e8e8;
+}
+
+.Navbar-right-icon .nav-item.dropdown a:hover {
+  color: transparent !important;
+  border-bottom: none !important;
+}
+.fa-search,
+.fa-cart-plus {
+  margin: 15px 0;
+}
+.Navbar-right-icon .dropdown-menu-right {
+  width: 223px;
+  min-width: 150px !important;
+  left: -150px;
+  top: 92% !important;
+}
+.Navbar-right-icon > div.nav-item.dropdown > ul:nth-child(3) > li {
+  padding: 0.25rem 37px;
+}
+.Navbar-right-icon > div.nav-item.dropdown > ul:nth-child(3) li:hover {
+  background-color: #eee8e8f8;
+}
+#--navbar
+  > div.row.d-none.d-lg-inline-block.Navbar-right-icon
+  > div.nav-item.dropdown
+  > ul:nth-child(2) {
+  text-align: center;
+}
+
+.LoginButton {
+  background-color: #f15758 !important;
+  color: #ffffff !important;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  margin: auto;
+  width: 80%;
+}
+.--register-button {
+  color: #f15758 !important;
+  text-decoration: underline;
+}
+.dropdown-item p {
+  color: #657c92;
+}
+// .dropdown-submenu > a::after {
+//   display: inline-block;
+//   background-image: url(../../../assets/svg/prev-indicator.svg);
+//   // margin-left: 0.255em;
+//   // vertical-align: 0.255em;
+//   // content: "";
+//   // border-top: 10px solid transparent;
+//   // border-right: 0;
+//   // border-bottom: 12px solid transparent;
+//   // border-left: 8px solid;
+//   // color: #e8e8e8;
+// }
+.--next-indicator {
+  width: 10px;
+  height: 10px;
+  line-height: 26px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 10px;
+}
+mat-option img {
+  width: 50px;
+  height: 50px;
+}
+mat-option {
+  min-width: 450px;
+  min-height: 70px;
+}
+#SearchModel {
+  z-index: 1000;
+}
+
+.autocomplete-fullwidth {
+  width: 100%;
+}
+.d-flex {
+  // padding: 20px;
+  img {
+    margin-right: 20px;
+    object-fit: contain;
+  }
+  h6 {
+    margin: 10px;
+    color: #000;
+  }
+}
+.cart-item {
+  display: flex;
+  // border: 1px solid #f15758;
+  img {
+  }
+  .product-desc {
+    // padding: 10px 20px;
+  }
+  i {
+    padding: 20px;
+  }
+}
+.ShoppingCartTab .dropdown-menu-right {
+  width: 275px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.no-cart {
+  padding: 20px;
+  text-align: center;
+}
+
+// =============== mini cart ====================
+#--mini-cart-container {
+  position: absolute;
+  overflow-y: hidden;
+  padding: 0rem;
+  padding-bottom: 44px;
+
+  #--mini-cart {
+    max-height: 300px;
+    overflow-y: scroll;
+    cursor: auto;
+    margin: 0rem;
+    padding: 0rem;
+    padding-top: 5px;
+    padding-bottom: 44px;
+
+    &::-webkit-scrollbar {
+      background-color: $grey;
+      width: 8px;
+      border-radius: 0px 3px 3px 0px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $main-color;
+      border-radius: 8px;
+    }
+
+    &::-webkit-scrollbar-track {
+    }
+
+    .cart-item {
+      padding: 2.5px 20px;
+      display: flex;
+      justify-content: space-between;
+
+      img {
+        width: 50px;
+        height: 50px;
+        object-fit: contain;
+      }
+      .product-desc {
+        width: 55%;
+        h6 {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .--mini-cart-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 44px;
+    background-color: #fef6c5;
+    /* color: white; */
+    left: 0;
+    right: 0;
+    padding: 0.1rem 0.8rem;
+    color: #000;
+    // & > div {
+    //   color: white;
+    //   &:hover {
+    //     text-decoration: underline;
+    //   }
+    // }
+  }
+  .--mini-cart-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    bottom: 0px;
+    background-color: #f15758;
+    /* color: white; */
+    left: 0;
+    right: 0;
+    padding: 0.1rem 0.8rem;
+
+    & > a {
+      color: white;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.modal-header h5 {
+  width: 100%;
+  img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+// =============== mini cart ====================
+
+// ================>>> START :: Login Modal <<<==================
+.--email-icon {
+  background-image: url("../../../assets/svg/email.svg");
+  height: 16px;
+  width: 20px;
+}
+
+.--password-icon {
+  background-image: url("../../../assets/svg/password.svg");
+  height: 20px;
+  width: 20px;
+}
+
+.--input-icon {
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 1rem;
+  & + input {
+    padding-left: 3rem;
+  }
+}
+#--login-form-modal-trigger,
+#--register-form-modal-trigger {
+  position: absolute;
+  right: 2rem;
+}
+
+.--api-login-error-message {
+  position: absolute;
+  top: -20px;
+  width: 80%;
+  text-align: center;
+  color: red;
+  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+}
+// ================>>> END :: Login Modal <<<==================
+
+// =============== >>> NAVBAR SVG ICONS <<< =================
+.--icon-link {
+  position: absolute !important;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+}
+.--cart-icon {
+  width: 30px;
+  height: 30px;
+  background-image: url("./../../../assets/svg/cart.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+.--search-icon {
+  width: 22px;
+  height: 22px;
+  background-image: url("./../../../assets/svg/search.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.--menu-bars-icon {
+  width: 37px;
+  height: 27px;
+  background-image: url("./../../../assets/svg/bars.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+// =============== >>> NAVBAR SVG ICONS <<< =================
+.multi-level {
+  margin-top: 0px;
+}

@@ -1,0 +1,8 @@
+{
+  "universal": {
+    "project": "Fridge",
+    "skipInstall": false,
+    "directory": ".",
+    "http": true
+  }
+}

@@ -1,0 +1,55 @@
+.MultiCarousel { float: left; overflow: hidden;  width: 100%; }
+.MultiCarousel .MultiCarousel-inner { transition: 1s ease all; float: left; }
+.MultiCarousel .MultiCarousel-inner .item { float: left;position: relative;}
+.MultiCarousel .MultiCarousel-inner .item > div { text-align: center; padding:10px; margin:10px;  color:#666;}
+.MultiCarousel .leftLst, .MultiCarousel .rightLst
+{
+  position:absolute;
+  border-radius:50%;
+  top:13%;
+}
+
+.MultiCarousel .leftLst { right:5%; }
+.MultiCarousel .rightLst { right:0; }
+
+.MultiCarousel .leftLst.over, .MultiCarousel .rightLst.over { pointer-events: none; background:#f7f7f7; color: #fff;border: 0; }
+
+
+
+.ItemImage
+{
+  width: 100%;
+  height: 120px;
+  background-size: cover;
+}
+.AddToCard
+{
+  background-color: #f15758;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  font-weight: 500;
+}
+.feature
+{
+  position: absolute;
+  top: -5%;
+  right: 0;
+  font-size: 10px;
+  color: #657c92 !important;
+  border-radius: 50%;
+  font-weight: bolder;
+  background-color:#fef6c5;
+}
+.item .details
+{
+  color: #426f9b !important;
+}
+
+@media only screen and (max-width: 992px) {
+  .MultiCarousel .leftLst { right:9%; }
+  .MultiCarousel .rightLst { right:0; }
+}
+@media only screen and (max-width: 600px) {
+  .MultiCarousel .leftLst { right:20%; }
+  .MultiCarousel .rightLst { right:5%; }
+}

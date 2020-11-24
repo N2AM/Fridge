@@ -1,0 +1,194 @@
+/* Start Background Css*/
+.Background-container {
+  width: 100%;
+  height: 100%;
+  background:  linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),url("../../../assets/img/background/background.png") center center;
+  background-size: cover;
+}
+.Background-container .img-fluid {
+  width: 100%;
+  max-height: 100%;
+  background-size: cover;
+}
+.Background-info {
+  z-index: 2;
+  /* position: absolute; */
+  left: 0;
+  width: 100%;
+  color: #fff;
+}
+
+/* overlay */
+.overlay {
+  position: absolute; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .Background-info {
+    position: relative;
+    /* background-color: #fff;
+    color: #000 !important; */
+    padding: 10px !important;
+  }
+  .description {
+    /* color: #000 !important; */
+    font-size: 16px !important;
+  }
+  .Background-container .img-fluid {
+    height: 100%;
+  }
+  form {
+    border: 1px solid #ddd;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    margin-top: 20px;
+  }
+
+  .Background-info h1 {
+    font-size: 4vw;
+  }
+  .Background-info p {
+    font-size: 12px;
+  }
+  .mobile-service img {
+    width: 120px !important;
+    padding: 1px !important;
+  }
+}
+/* Small devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 600px) {
+  .Background-info {
+    top: 60%;
+  }
+  .Background-info h1 {
+    font-size: 4vw;
+  }
+  .Background-info p {
+    font-size: 12px;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .Background-info {
+    position: relative;
+    /* background-color: #fff; */
+    /* color: #000 !important; */
+    padding: 10px !important;
+  }
+  .description {
+    /* color: #000 !important; */
+    font-size: 16px !important;
+  }
+  .Background-container .img-fluid {
+    height: 100%;
+  }
+  form {
+    border: 1px solid #ddd;
+    padding-top: 15px !important;
+    padding-bottom: 15px !important;
+    margin-top: 20px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .Background-container .img-fluid {
+    height: 100%;
+  }
+  .Background-info {
+    top: 15%;
+  }
+  .Background-info h1 {
+    font-size: 4vw;
+  }
+  .Background-info p {
+    font-size: 12px;
+  }
+}
+/*All devices except large devices*/
+@media only screen and (max-width: 992px) {
+  .navbar {
+    background: rgba(48, 48, 48, 0.9) !important;
+    z-index: 4 !important;
+  }
+  .navbar-nav .nav-item {
+    padding-right: 0 !important;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .Background-container .img-fluid {
+    height: 100%;
+  }
+  .Background-info {
+    top: 20%;
+  }
+  .Background-info h1 {
+    font-size: 5vw;
+  }
+  .Background-info p {
+    font-size: 18px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .Background-container .img-fluid {
+    height: 100%;
+    width: 100%;
+  }
+  .Background-info {
+    top: 20%;
+  }
+}
+
+.loginButtonModal,
+.loginButtonModalFacebbok {
+  background-color: #f15758;
+  font-family: "Inconsolata", monospace;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  font-weight: bolder;
+}
+.loginButtonModalFacebbok {
+  background-color: #365495 !important;
+}
+.LoginHelp {
+  color: #657c92;
+  font-size: 15px;
+}
+.RegisterModal {
+  color: #f15758 !important;
+  text-decoration: underline !important;
+  font-weight: bold !important;
+  cursor: pointer;
+}
+
+.header {
+  font-weight: normal;
+  font-family: Gilroy, serif;
+}
+.description {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.FormContainer {
+  background-color: #fff;
+  box-shadow: 1px 1px 1px #fff, -1px -1px 1px #fff;
+  border-radius: 10px;
+}
+.Send {
+  background-color: #f15758;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  font-weight: 500;
+}

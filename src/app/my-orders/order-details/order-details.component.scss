@@ -1,0 +1,90 @@
+.BreadCrumbs p a {
+  font-size: 20px !important;
+  font-family: gilroy-light;
+  color: #657c92;
+  line-height: 20px;
+  font-weight: 300;
+  margin-bottom: 0;
+  margin-right: 10px;
+}
+.Order-item {
+  list-style-type: none;
+  color: #657c92;
+  font-size: 18px;
+}
+.Order-item .order-details {
+  text-align: left;
+}
+h3 {
+  font-family: din;
+  font-size: 28px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.18;
+  letter-spacing: normal;
+  color: #f15758;
+  margin: 50px 0 15px;
+}
+ul {
+  padding: 10px !important;
+}
+ul span {
+  margin: 10px !important;
+  padding: 0 !important;
+}
+.items img {
+  width: 163px;
+  height: 168px;
+  object-fit: contain;
+}
+.items {
+  padding-left: 0 !important;
+  display: flex;
+}
+.items .col-md-3 {
+  padding-left: 0;
+}
+
+.total-items span {
+  font-size: 20px;
+}
+.items span {
+  font-size: 15px;
+}
+.btn {
+  border-radius: 0px 0px 5px 5px;
+  background: #f15758;
+  color: #fef6c5;
+  margin-left: -15px;
+}
+
+@media only screen and (max-width: 600px) {
+  ul {
+    // display: flex;
+  }
+  span {
+    font-size: 12px !important;
+  }
+  .items {
+    display: block;
+  }
+  .items img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .items .col-md-3 {
+    padding-left: 15px;
+  }
+  .col-md-9 {
+    display: flex;
+    justify-content: center;
+  }
+  .col-md-9 span {
+    text-align: center !important;
+  }
+  .btn {
+    margin: 0;
+  }
+}

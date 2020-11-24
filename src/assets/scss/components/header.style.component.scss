@@ -1,0 +1,46 @@
+@import './../colors.scss';
+
+#--navbar {
+
+    // search ICON
+    .searchTab {
+        cursor: pointer;
+        outline: none;
+    }
+
+    // NAVBAR Right icons
+    .Navbar-right-icon {
+        & > div {
+            @media (max-width: 1030px){
+                padding: 1rem 1.2rem !important;
+            }
+            a {
+                padding: .5rem 0rem;
+            }
+        }
+    }
+
+    // white underline hover effect.
+    .nav-link {
+        position: relative;
+        transition: .3s color ease-in-out;
+        
+        &:hover {
+            color: $light-color !important;
+        }
+        &::after {
+            content: '';
+            width: 0%;
+            height: 1px;
+            background-color: $light-color;
+            position: absolute;
+            right: 0%;
+            transition: .3s width ease-in-out;
+            bottom: 0%;
+        }
+        &:hover::after {
+            width: 100%;
+            left: 0%;
+        }
+    }
+}

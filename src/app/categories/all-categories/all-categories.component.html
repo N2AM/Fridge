@@ -1,0 +1,16 @@
+<div *ngIf="categories$" class="container">
+  <div class="row">
+    <div *ngFor="let category of (categories$ | async)" class="col-md-4 p-5">
+      <img
+        [src]="category.images[0]"
+        [routerLink]="'/categories/sub_category/' + category.id"
+      />
+      <h3 [routerLink]="'/categories/sub_category/' + category.id">
+        {{ category.name }}
+      </h3>
+      <button class="btn btn-block AddToCard">
+        <a [routerLink]="'/categories/sub_category/' + category.id">Browse</a>
+      </button>
+    </div>
+  </div>
+</div>

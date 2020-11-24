@@ -1,0 +1,18 @@
+.--product-slider {
+    .--headung__text {
+        font-size: 28px;
+    }
+    
+    .--owl-carousel {
+        owl-carousel-child {
+            margin: 1rem 0rem;
+        }
+        .owl-theme .owl-nav {
+            margin-top: -12px !important;
+    
+            button {
+                margin: 5px .5rem !important;
+            }
+        }
+    }
+}

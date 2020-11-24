@@ -1,0 +1,76 @@
+@import '../../../assets/scss/colors';
+
+.--product-img-details-container {
+    padding-top: 3rem;
+}
+
+.--product-text-details-container{
+    p{
+        font-size: 17px;
+        color: $grey;
+        margin: -4px 0rem !important;
+    }
+}
+.AddToCard {
+    position: relative;
+        right: 0;
+        bottom: 0px;
+        width: 100%;
+        background-color: #f15758;
+        border-radius: 0px 0px 5px 5px;
+        padding: 3px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        height: 38px;
+}
+.--buttons-container {
+    position: relative;
+    
+    #--quantity-container  {
+        position: relative;
+        right: 0;
+        bottom: 0px;
+        width: 100%;
+        background-color: #f15758;
+        border-radius: 0px 0px 5px 5px;
+        padding: 3px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        font-size: 1.7rem;
+        height: 38px;
+
+        span {
+            line-height: 100%;
+            font-size: 1.3rem;
+        }
+        button {
+            background: transparent;
+            border: none;
+            outline: none;
+            color: white;
+            font-size: 1.8rem;
+            line-height: 100%;
+        }
+
+        // .--product-qty-box {
+        //     padding: 0px 10px;  
+        //     display: inline-block;
+        //     font-variant-numeric: tabular-nums;
+        //     margin: 0rem 3px;
+        //     font-size: 1.5rem;
+        //     background: #426f9b;
+        //     color: white;
+        //     height: 30px;
+        //     line-height: 30px;
+        //     text-align: center;
+        //     vertical-align: middle; 
+        //     position: absolute;
+        //     right: 0;
+        //     top: -36px;
+        // }
+    }
+}

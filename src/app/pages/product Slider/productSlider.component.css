@@ -1,0 +1,117 @@
+
+
+/* =============>> Slider style <<================== */
+/* =============>> Slider style <<================== */
+/* =============>> Slider style <<================== */
+.--product-slider{
+  padding: 2rem 0rem;
+}
+.--heading{
+  color: #f15758;
+  font-weight: bold;
+}
+
+.--heading h5 {
+  /* font-size: 2.2rem; */
+  /* letter-spacing: -2px; */
+  /* font-family: din; */
+  /* font-weight: 500; */
+  /* letter-spacing: -2px; */
+}
+
+.--img-container{
+  width: 81%;
+  padding-bottom: 81%;
+  background-size: cover;
+  background-position: center center;
+  margin: 0 auto;
+}
+.--slider--image-details {
+  color: #657c92;
+}
+
+
+.--slider--image-details button {
+  display: inline-block;
+  width: 100%;
+  background-color: #f15758;
+  color: white;
+  text-align: center;
+  padding: .5rem 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 0px 0px 10px 10px;
+}
+.--buttons-container {
+  /* its style on style.css as a global styling cause of this class in owl-carousel component */
+  /* position: absolute;
+  top: -36px;
+  right: 0px; */
+}
+/*
+
+.--slider--image-container {
+  border-radius: 50%;
+  width: 100%;
+  border: 6px solid #EDEDEB;
+  box-shadow: 0 0px 0px 5px #D3D1CF;
+  overflow: hidden;
+}
+.--carousel-buttons {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+}
+
+.--carousel-buttons button {
+  position: absolute;
+  cursor: pointer;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  color: #f15758;
+}
+.--carousel-buttons button.--carousel-previous{
+  left: 0;
+  margin-left: 2rem;
+}
+.--carousel-buttons button.--carousel-next{
+  right: 0;
+  margin-right: 2rem;
+}
+
+.--img-container{
+  width: 100%;
+  padding-bottom: 100%;
+  background-size: cover;
+}
+
+.--slider--image-details {
+  margin: 2rem 0rem;
+
+}
+
+.--slider--image-details h6{
+  color: #657c92;
+  font-size: 15px;
+  line-height: 20px;
+  font-family: gilory-bold;
+}
+
+.--slider--image-details button {
+  background: none;
+  border: none;
+  color: #f15758;
+  line-height: 24px;
+  font-size: 20px;
+  cursor: pointer;
+  outline: none;
+  font-family: din;
+}
+*/
+/* =============>> Slider style <<================== */
+/* =============>> Slider style <<================== */
+/* =============>> Slider style <<================== */

@@ -1,0 +1,178 @@
+@import '../../../assets/scss/colors.scss';
+nav#--navbar {
+    // * {
+    //     backface-visibility: hidden;
+    // }
+    @media (max-width: 991px) {
+        background-color: $main-color;
+    }
+
+    // Checkbox navbar trigger
+    #--nav-trigger-checkbox {
+        opacity: 0;
+        position: relative;
+        z-index: -11;
+        &:checked + #--responsive-navbar-container #--responsive-navbar  {
+            transform: translateX(0%);
+        }
+
+        &:checked + #--responsive-navbar-container .--responsive-navbar-toggler {
+            span {
+                background-color: $main-color;
+
+                &:first-child {
+                    transform-origin: left;
+                    transform: rotate(-45deg) translateY(24px) translateX(-6px);
+                }
+                &:nth-child(2) {
+                    opacity: 0;
+                }
+                &:last-child {
+                    transform-origin: right;
+                    transform: rotate(45deg) translateY(1px) translateX(5px);
+                }
+            }
+        }
+        //     background: #657c92;
+        // padding: .3rem;
+        // }
+    }
+
+    #--responsive-navbar-container {
+        display:none;    
+
+        @media (max-width: 768px) {
+            display: block;
+            position: relative;
+            right: 1.5rem;
+
+            .--responsive-navbar-toggler {
+                width: 34px;
+                height: 26px;
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                z-index: 5;
+                cursor: pointer;
+                
+
+                span.--toggler-icon {
+                    transition: .3s all;
+                    height: 1px;
+                    width: 100%;
+                    background-color: white;
+                }
+            }
+
+            
+            #--responsive-navbar {
+                height: 0px;
+                position: fixed;
+                top: 0px;
+                bottom: 0px;
+                left: 0px;
+                right: 0px;
+                z-index: 4;
+                transform: translateX(100%);
+                transition: .3s all;
+                
+                ul{
+                    list-style: none;
+                    &.--sub-menu {
+                        max-height: 150px;
+                        overflow-y: scroll;
+                        overflow-x: hidden;
+                    }
+                }
+
+                & > ul {
+                    background-color: white;
+                    list-style: none;
+                    position: absolute;
+                    right: 0px;
+                    width: 60%;
+                    top: -2px;
+                    height: calc(100vh + 56px); // حل مؤقت
+                    padding: 3rem 1.5rem;
+                    overflow-y: scroll;
+                    &::-webkit-scrollbar {
+                        display:none;
+                    }
+                    
+                    // &::-webkit-scrollbar-thumb {
+                    //     background-color: $main-color; 
+                    //     border-radius: 8px;
+                    // }
+
+                    li {
+                        margin: .3rem 0rem;
+                        
+                        a {
+                            color: $main-color ;
+                            font-size: 1.4rem;
+                            font-weight: 100;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+    .--main-menu,
+    .--sub-menu  {
+        padding: 0rem !important;
+        padding-left: 10px !important;
+        &::-webkit-scrollbar {
+            background-color: $grey; 
+            width: 8px;
+            border-radius: 0px 3px 3px 0px;
+        }
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: $main-color; 
+            border-radius: 8px;
+        }
+    }
+
+    .--have-sub-menu {
+        position: relative;
+        & > span.--plus-icon {
+            right: 0;
+            top: 0;
+            color: $main-color;
+            position: absolute;
+            font-size: 1.4rem !important;
+            position: absolute;
+            padding-left: 2rem;
+            padding-right: .5rem;
+            line-height: 100%;
+        }
+
+    .--main-menu-container {
+        ul {
+            list-style: none;
+
+            li {
+                margin: 0.3rem 0rem;
+            }
+        }
+
+        }
+    }
+}
+
+.--main-menu-item {
+    & > a {
+        font-size: .9rem !important;
+    }
+}
+.--sub-menu-item {
+    & > a {
+        font-size: .9rem !important;
+        color: $grey !important;
+        padding-left: 10px;
+    }
+}
+

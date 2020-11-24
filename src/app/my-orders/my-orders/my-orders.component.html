@@ -1,0 +1,52 @@
+<div class="container mt-5 mb-5 pl-3">
+  <div class="BreadCrumbs">
+    <nav>
+      <p><a routerLink="/">Home </a></p>
+      <p class="mt-1">
+        <img src="../../../assets/svg/Group 3349.svg" />
+        <a routerLink="/orders">
+          My Orders
+        </a>
+      </p>
+    </nav>
+  </div>
+  <div *ngIf="orders && orders.length > 0; else spinner"></div>
+  <div *ngFor="let order of orders" class="row mt-5 mb-3">
+    <div class="col-lg-8 col-md-10">
+      <ul>
+        <li class="Order-item row">
+          <span class="col-md-4 col-sm-4 col-6">Order no </span>
+          <span class="order-details col-md-8 col-sm-8 col-6">{{
+            order.order_id
+          }}</span>
+        </li>
+        <li class="Order-item row">
+          <span class="col-md-4 col-sm-4 col-6">Order Date </span>
+          <span class="order-details col-md-8 col-sm-8 col-6">{{
+            order.date
+          }}</span>
+        </li>
+        <li class="Order-item row">
+          <span class="col-md-4 col-sm-4 col-6">Total Amount </span>
+          <span class="order-details col-md-8 col-sm-8 col-6"
+            > {{ order.final_total_price }} EGP</span
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="col-lg-4 col-md-12 col-sm-12 col-12">
+      <a
+        [routerLink]="'/orders/' + order.order_id"
+        class="text-danger read-more"
+      >
+        Read More</a
+      >
+    </div>
+    <hr />
+  </div>
+</div>
+<ng-template #spinner>
+  <div style="display: flex;justify-content: center;align-items: center;">
+    <mat-spinner *ngIf="!noOrders" [color]="'accent'"></mat-spinner>
+  </div>
+</ng-template>

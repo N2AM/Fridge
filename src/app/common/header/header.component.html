@@ -1,0 +1,1091 @@
+<!--Start Header Design-->
+<div style="position: relative; overflow-x: hidden;">
+    <!--Start Navbar -->
+    <nav
+      id="--navbar"
+      class="navbar navbar-expand-lg"
+      [ngClass]="{ RedNav: RedNav }"
+      style="z-index:  100 !important;"
+    > 
+      <a class="navbar-brand" [routerLink]="['']">
+        <img src="/assets/img/logo/logo.png" />
+      </a>
+      
+      <!-- Bootstrap Responsive navbar toggler -->
+      <!-- <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon">
+          <i class="fas fa-chevron-circle-down text-white mt-1"></i>
+        </span>
+      </button> -->
+
+    <input type="checkbox" id="--nav-trigger-checkbox" style="opacity: 0;" />
+
+    <!-- Custom responsive navbar toggler -->
+    <div id="--responsive-navbar-container">
+      <label
+        for="--nav-trigger-checkbox"
+        class="--responsive-navbar-toggler"
+        style="margin: 0rem;"
+      >
+        <span class="--toggler-icon"></span>
+        <span class="--toggler-icon"></span>
+        <span class="--toggler-icon"></span>
+      </label>
+
+      <div id="--responsive-navbar">
+        <!-- <div class="--login-register">
+            <button>signin</button>
+            <button>signup</button>
+          </div> -->
+        <ul class="m-0">
+          <li>
+            <a [routerLink]="['/']">Home</a>
+          </li>
+          <li>
+            <a [routerLink]="['/cart']">Cart</a>
+          </li>
+          <li
+            class="--main-menu-container --have-sub-menu"
+            id="--main-menu-container-1"
+          >
+            <span class="d-inline-block  --plus-icon cursor">+</span>
+            <a [routerLink]="['/categories']">
+              Categories
+            </a>
+            <ul class="--main-menu --menu">
+              <li
+                class="--main-menu-item --sub-menu-container"
+                *ngFor="let cat of categoriesTree; let i = index"
+                [ngClass]="{
+                  '--have-sub-menu':
+                    cat.hasSubCategories && cat.sub_categories.length
+                }"
+                [id]="'--sub-menu-container-' + (1 + i)"
+              >
+                <span
+                  class="d-inline-block  --plus-icon cursor"
+                  *ngIf="cat.hasSubCategories && cat.sub_categories.length > 0"
+                  >+</span
+                >
+                <a [routerLink]="['/categories', cat.id]">
+                  {{ "- " + cat.name }}
+                </a>
+
+                <ul
+                  class="--sub-menu --menu"
+                  [hidden]="!(cat.hasSubCategories && cat.sub_categories)"
+                >
+                  <li
+                    class="--sub-menu-item"
+                    *ngFor="let subCat of cat.sub_categories"
+                  >
+                    <a [routerLink]="['categories', subCat.id]">{{
+                      subCat.name
+                    }}</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <li
+            [hidden]="!(userService.loggedIn$ | async)"
+            class="--main-menu-container --have-sub-menu"
+            id="--main-menu-container-2"
+          >
+            <span class="d-inline-block  --plus-icon cursor">+</span>
+            <a [routerLink]="['/my-account']">
+              My Account
+            </a>
+
+            <ul class="--main-menu --menu">
+              <li
+                class="--main-menu-item --sub-menu-container"
+                *ngIf="(userService.loggedIn$ | async)"
+              >
+                <a class="nav-link p-0" routerLink="/orders">My Orders</a>
+              </li>
+              <li
+                class="--main-menu-item --sub-menu-container"
+                *ngIf="(userService.loggedIn$ | async)"
+              >
+                <a class="nav-link p-0" routerLink="/wishlist">My Wishlist</a>
+              </li>
+              <li
+                class="--main-menu-item --sub-menu-container"
+                *ngIf="(userService.loggedIn$ | async)"
+              >
+                <a class="nav-link p-0" routerLink="/my-account">My Account</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a [routerLink]="['/about']">About</a>
+          </li>
+          <li>
+            <a [routerLink]="['/customer-service', 'contact-us']">Contact Us</a>
+          </li>
+          <li *ngIf="(userService.loggedIn$ | async)">
+            <a class="nav-link" style="padding:0rem;" (click)="logout()">
+              Logout
+            </a>
+          </li>
+
+          <li class="d-flex flex-row justify-content-center px-0">
+            <ul class="p-0 w-100">
+              <li class="text-center">
+                <button
+                  class="btn btn-danger LoginButton btn-sm"
+                  data-toggle="modal"
+                  data-target="#LoginModel"
+                  *ngIf="!(userService.loggedIn$ | async)"
+                >
+                  Login
+                </button>
+              </li>
+              <li class="text-center">
+                <p class="No-Acount" [hidden]="userService.loggedIn$ | async">
+                  Don't Have Account
+                </p>
+                <button
+                  class="--register-button btn-sm btn"
+                  data-toggle="modal"
+                  data-target="#RegisterModel"
+                  *ngIf="!(userService.loggedIn$ | async)"
+                >
+                  Sign Up
+                </button>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item routerLinkActive pl-0 pr-5">
+          <a class="nav-link --dineng-regular strech" routerLink="/">Home </a>
+        </li>
+
+        <!-- class="CategoriesContainer" -->
+        <li class="nav-item dropdown pr-5 CategoriesContainer">
+          <a
+            tabindex="-1"
+            class="nav-link cursor --dineng-regular strech"
+            routerLink="/categories"
+          >
+            Categories
+          </a>
+          <ul
+            id="sub-0"
+            class="dropdown-menu multi-level dropright"
+            role="menu"
+            aria-labelledby="dLabel"
+          >
+            <li
+              *ngFor="let category of categoriesTree"
+              role="menuitem"
+              class="dropdown row-space"
+              [ngClass]="category.sub_categories?.length > 0 ? 'dropdown-submenu' : ''"
+            >
+              <a
+                tabindex="-1"
+                [routerLink]="
+                  category.sub_categories?.length > 0
+                    ? ['/categories/sub_category/' + category.id]
+                    : ['/categories/' + category.id]
+                "
+                >{{ category.name }}</a
+              >
+              <div
+                *ngIf="category.sub_categories?.length > 0"
+                class="--next-indicator "
+              ></div>
+              <ul
+                id="sub-5"
+                *ngIf="
+                  category.hasSubCategories &&
+                  category.sub_categories.length > 0
+                "
+                class="dropdown-menu"
+              >
+                <li *ngFor="let subcategory of category.sub_categories">
+                  <a
+                    class="dropdown-item"
+                    class="link-hover"
+                    routerLink="/categories/{{ subcategory.id }}"
+                    >{{ subcategory.name }}</a
+                  >
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+
+        <li class="nav-item pr-5">
+          <a
+            class="nav-link --dineng-regular strech"
+            routerLink="/customer-service/contact-us"
+            tabindex="-1"
+            aria-disabled="true"
+            >Contact us</a
+          >
+        </li>
+
+        <li class="nav-item pr-5 routerLinkActive">
+          <a class="nav-link --dineng-regular strech" routerLink="/about"
+            >About</a
+          >
+        </li>
+        <!--Show Only In Toggle Menu-->
+        <li
+          class="nav-item pr-5 d-lg-none col-12"
+          *ngIf="(userService.loggedIn$ | async)"
+        >
+          <a
+            class="nav-link "
+            routerLink="/my-order"
+            tabindex="-1"
+            aria-disabled="true"
+            >My orders</a
+          >
+        </li>
+
+        <li class="nav-item pr-5 d-lg-none col-12">
+          <a
+            class="nav-link --dineng-regular"
+            routerLink="/about"
+            tabindex="-1"
+            aria-disabled="true"
+            >About Us</a
+          >
+        </li>
+
+        <!-- <div class="nav-item pr-5 d-lg-none col-12">
+            <div class="row">
+              <div class="col-6">
+                <button
+                  class="btn btn-light btn-block"
+                  data-toggle="modal"
+                  data-target="#LoginModel"
+                >
+                  Login
+                </button>
+              </div>
+              <div class="col-6">
+                <button
+                  class="btn btn-danger text-white btn-block"
+                  (click)="ShowRegisterModal()"
+                >
+                  Register
+                </button>
+              </div>
+            </div>
+          </div> -->
+        <!--Show Only In Toggle Menu-->
+      </ul>
+    </div>
+    <div class="row d-none d-lg-inline-block Navbar-right-icon">
+      <div class="searchTab  HelpContainer" id="Help">
+        <!-- role="button"
+        data-toggle="modal"
+        data-target="#SearchModel"
+        aria-haspopup="true"
+        aria-expanded="false" -->
+        <div class="search-container" tabindex="1">
+          <form class="example-form">
+            <!-- <mat-form-field class="autocomplete-fullwidth"> -->
+            <input
+              type="text"
+              aria-label="Number"
+              matInput
+              id="searchInput"
+              [formControl]="autocompleteProduct"
+              [matAutocomplete]="auto"
+              (keyup.enter)="search($event)"
+            />
+
+            <!-- </mat-form-field> -->
+          </form>
+          <!-- <input placeholder='search' type='text' id='searchInput' (keyup.enter)="search($event)"> -->
+
+          <a class="button">
+            <div class="--search-icon" (click)="focus()"></div>
+          </a>
+        </div>
+                    <mat-autocomplete #auto="matAutocomplete">
+                      <div *ngIf="products && products.length > 0">
+                        <mat-option *ngFor="let option of products" [value]="option.name">
+                          <a class="d-flex" [routerLink]="'/product/' + option.id">
+                            <img *ngIf="option && option.images && option.images.length > 0" [src]="option.images[0]" />
+                            <h6>
+                              {{ option.name }}
+                            </h6>
+                          </a>
+                        </mat-option>
+                      </div>
+                    </mat-autocomplete>
+        <!-- <i class="fas fa-search text-secondary"></i> -->
+        <!-- <div class="--search-icon" (click)='focus()'></div> -->
+      </div>
+
+      <div class="ShoppingCartTab dropdown ">
+        <a tabindex="-1" [routerLink]="['/cart']" class="--icon-link">
+          <!-- <i class="fas fa-cart-plus text-white"></i> -->
+          <div class="--cart-icon"></div>
+          <span
+            id="--cart-total-number"
+            *ngIf="(userService.loggedIn$ | async)"
+            >{{ cartTotal }}</span
+          ></a
+        >
+        <div
+          id="--mini-cart-container"
+          class="dropdown-menu dropdown-menu-right"
+          role="menu"
+          aria-labelledby="dLabel"
+          [ngStyle]="{
+            'padding-bottom': !((cart)?.products?.length) ? '0px' : '44px'
+          }">
+              <ul id="--mini-cart"
+              [ngStyle]="{
+                'padding-bottom': !((cart)?.products?.length) ? '0px' : '44px'
+              }">
+              <li
+                [ngClass]="cart?.products?.length ? show : hide"
+                class="cart-item"
+                *ngFor="let product of cart?.products"
+              >
+                <img
+                  [src]="product.images[0]"
+                  [routerLink]="'/product/' + product.id"
+                />
+                <div class="product-desc">
+                  <h6 [routerLink]="'/product/' + product.id">
+                    {{ product.name }}
+                  </h6>
+                  <h6>{{ product.standard_rate + " x " + product.qty }}</h6>
+                  <h6> Price {{ product.standard_rate * product.qty }}</h6>
+                </div>
+                <div (click)="removeFromCart(product.id)" class="cursor">
+                  <i class="fas fa-times" style="font-style: normal;">x</i>
+                </div>
+              </li>
+  
+              <li class="no-cart" *ngIf="!cart?.products?.length">
+                <i class="fas fa-shopping-cart"></i> Your cart is empty, add some
+                products ...
+              </li>
+            </ul>
+            <div *ngIf="cart?.products?.length" class="--mini-cart-price">
+              <div>Total Price</div>
+              <div>{{cart.totalPrice}}</div>
+            </div>
+                        <div *ngIf="cart?.products?.length" class="--mini-cart-buttons">
+                          <a [routerLink]="['/cart']">View Cart</a>
+                          <a [routerLink]="['/checkout']">Checkout</a>
+                        </div>
+          </div>
+        </div>
+        <div class="nav-item dropdown --menu-bars-container">
+  
+          <a
+            class="nav-link cursor dropdown-toggle --icon-link"
+            data-toggle="dropdown"
+            data-hover="dropdown"
+            data-target="#"
+            aria-haspopup="true"
+            aria-expanded="false"
+            >
+            <!-- <i class="fas fa-bars text-white cursor"></i> -->
+            <div class="--menu-bars-icon"></div>
+          </a>
+  
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li class="dropdown-item" [hidden]="userService.loggedIn$ | async">
+              <button
+                class="btn btn-danger LoginButton btn-sm"
+                data-toggle="modal"
+                data-target="#LoginModel"
+                >
+                <!-- *ngIf="!(userService.loggedIn$ | async)"s -->
+                Login
+              </button>
+            </li>
+
+            <li [hidden]="userService.loggedIn$ | async">
+              <p class="No-Acount">
+                Don't Have Account
+              </p>
+              <button
+                class="--register-button btn-sm btn"
+                data-toggle="modal"
+                data-target="#RegisterModel"
+                >
+                <!-- *ngIf="!(userService.loggedIn$ | async)" -->
+                Sign Up
+              </button>
+            </li>
+
+            <li class="dropdown-item" routerLink="/my-account" [hidden]="!(userService.loggedIn$ | async)">My Account</li>
+            <li class="dropdown-item" [routerLink]="['/wishlist']" [hidden]="!(userService.loggedIn$ | async)">
+              My Wishlist
+            </li>
+            <li class="dropdown-item" routerLink="/orders" [hidden]="!(userService.loggedIn$ | async)">My Orders</li>
+            <!-- <li class="dropdown-item" routerLink="customer-service/help">
+              Help
+            </li> -->
+            <li
+            class="dropdown-item"
+            (click)="logout()"
+            [routerLink]="['/']"
+            style="cursor: pointer;"
+            id="--logout-button"
+            [hidden]="!(userService.loggedIn$ | async)">
+            Logout
+          </li>
+          </ul>
+          
+        </div>
+        <!-- <div class="dropdown-menu HelpMenu" aria-labelledby="Help" id="HelpList">
+              <button class="btn btn-danger LoginButton btn-sm" data-toggle="modal" data-target="#LoginModel"
+              *ngIf="!(userService.loggedIn$ | async)"> Login </button>
+              <p class="No-Acount" *ngIf="!(userService.loggedIn$ | async)">Don't Have Account</p>
+              <br>
+              <nav *ngIf="(userService.loggedIn$ | async)">
+                <a class="dropdown-item" > My Account </a>
+                <a class="dropdown-item" > My Favourite </a>
+                <a class="dropdown-item" routerLink="/my-order"> My Orders  </a>
+                <a class="dropdown-item" routerLink="/help"> Help  </a>
+                <a class="dropdown-item" (click)="logout()" [routerLink]="['/']" style="cursor: pointer;">Logout</a>
+              </nav>
+            </div> -->
+    </div>
+  </nav>
+  <!--End Navbar -->
+  <!--End Header Design-->
+</div>
+
+<!-- ========================== LoginTemplate ============================= -->
+<!-- Modal -->
+<div
+  class="modal fade px-0"
+  id="LoginModel"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="LoginModel"
+  aria-hidden="true"
+>
+  <!-- (click)="resetLoginForm()" -->
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5
+          class="modal-title text-center"
+          id="exampleModalLongTitle"
+          style="margin: auto;"
+        >
+          <img src="/assets/img/logo/red-logo.png" class="" />
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          id="--login-form-modal-trigger"
+        >
+          <!-- (click)="closeLoginModal()" -->
+          <!-- #closeLoginModal -->
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-5 mt-5 mb-2">
+        <div class="--api-login-error-message" [hidden]="!loginAPIError.show">
+          <p>{{ loginAPIError.error }}</p>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
+          <div class="form-group mb-4">
+            <div class="--email-icon --input-icon"></div>
+            <input
+              formControlName="email"
+              type="text"
+              class="form-control"
+              placeholder="Email"
+              autocomplete="off"
+            />
+            <div
+              class="error-messages"
+              *ngIf="logf.email.errors && logf.email.touched"
+            >
+              <div class="invalid-message" *ngIf="logf.email.errors.required">
+                Email is required.
+              </div>
+              <div class="invalid-message" *ngIf="logf.email.errors.email">
+                Invalid Email.
+              </div>
+            </div>
+          </div>
+          <div class="form-group mb-4">
+            <div class="--password-icon --input-icon"></div>
+            <input
+              formControlName="password"
+              type="password"
+              class="form-control"
+              placeholder="password"
+              autocomplete="off"
+            />
+            <div
+              class="error-messages"
+              *ngIf="logf.password.errors && logf.password.touched"
+            >
+              <div
+                class="invalid-message"
+                *ngIf="logf.password.errors.required"
+              >
+                Password is required.
+              </div>
+            </div>
+          </div>
+          <!-- =========>> SPINNER FOR LOADING TILL APP RELOADED <<========== -->
+          <!-- <div style="width: 30px; height: 30px; margin: 0 auto;">
+                <mat-spinner bacjstyle="transform: scale(.3); margin: 0 auto;"
+                [color]="'accent'" *ngIf="loginLoadingToRefreshPage"></mat-spinner>
+            </div> -->
+          <!-- =========>> SPINNER FOR LOADING TILL APP RELOADED <<========== -->
+
+          <button
+            class="btn btn-danger btn-block loginButtonModal mt-2"
+            type="submit"
+            [disabled]="loginForm.invalid"
+          >
+            Login
+          </button>
+
+          <button
+            type="button"
+            class="btn btn-info btn-block loginButtonModalFacebbok"
+          >
+            f | Login with facebook
+          </button>
+        </form>
+      </div>
+      <div class="modal-footer" style="margin: auto;">
+        <p class="LoginHelp text-center" id="--to-register-modal">
+          Don't have an account ?<a
+            class="RegisterModal"
+            (click)="ShowRegisterModal(); modalFromModal$.next(true)"
+          >
+            Register
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!--LoginTemplate-->
+
+<!--RegisterTemplate-->
+<!-- Modal -->
+<div
+  class="modal fade px-0"
+  id="RegisterModel"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="RegisterModel"
+  aria-hidden="true"
+>
+  <!-- (click)="resetRegisterForm()" -->
+  <div
+    class="modal-dialog modal-dialog-centered"
+    role="document"
+    id="register-modal"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5
+          class="modal-title"
+          id="register--modal-title"
+          style="margin: auto;"
+        >
+          <img src="/assets/img/logo/red-logo.png" class="" />
+        </h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+          id="--register-form-modal-trigger"
+        >
+          <!-- (click)="closeRegisterModal()" -->
+          <!-- #closeRegisterModal -->
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body m-1">
+        <form
+          [formGroup]="registerForm"
+          (ngSubmit)="register()"
+          class="container"
+          *ngIf="registerForm"
+        >
+          <div class="row">
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="firstName"
+                type="text"
+                class="form-control"
+                placeholder="First Name"
+                autocomplete="off"
+                />
+                <!-- autofocus="true" -->
+              <div
+                class="error-messages"
+                *ngIf="regf.firstName.errors && regf.firstName.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.firstName.errors.required"
+                >
+                  First Name is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.firstName.errors.pattern"
+                >
+                  First Name must be with only letters.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.firstName.errors.minlength"
+                >
+                  First Name must be greater than 3 chars.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.firstName.errors.maxlength"
+                >
+                  First Name must be less than 40 chars.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="lastName"
+                type="text"
+                class="form-control"
+                placeholder="Last Name"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.lastName.errors && regf.lastName.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.lastName.errors.required"
+                >
+                  Last Name is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.lastName.errors.pattern"
+                >
+                  Last Name must be with only letters.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.lastName.errors.minlength"
+                >
+                  Last Name must be greater than 3 chars.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.lastName.errors.maxlength"
+                >
+                  Last Name must be less than 40 chars.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="email"
+                type="text"
+                class="form-control"
+                placeholder="Email"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.email.errors && regf.email.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.email.errors.email || regf.email.errors.pattern"
+                >
+                  Invalid email.
+                </div>
+                <div class="invalid-message" *ngIf="regf.email.errors.required">
+                  Email is required.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="mobile"
+                type="text"
+                class="form-control"
+                placeholder="Mobile Number"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.mobile.errors && regf.mobile.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.mobile.errors.required"
+                >
+                  Mobile number is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.mobile.errors.minlength"
+                >
+                  Mobile number must be at least 11 numbers.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.mobile.errors.maxlength"
+                >
+                  Mobile number must be less than 15 numbers.
+                </div>
+                <div class="invalid-message" *ngIf="regf.mobile.errors.pattern">
+                  Mobile number must be with only numbers.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="password"
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.password.errors && regf.password.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.password.errors.required"
+                >
+                  Password is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.password.errors.minlength"
+                >
+                  Password must be at least 8 chars.
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="confirmPassword"
+                type="password"
+                class="form-control"
+                placeholder="Confirm Password"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="
+                  regf.confirmPassword.errors && regf.confirmPassword.touched
+                "
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.confirmPassword.errors.required"
+                >
+                  Confirm Password is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.confirmPassword.errors.minlength"
+                >
+                  Confirm Password must be at least 8 chars.
+                </div>
+              </div>
+              <div
+                class="error-messages"
+                *ngIf="regf.confirmPassword.errors?.mustMatch"
+              >
+                <div class="invalid-message">
+                  Passwords must match.
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- <h6>Address List</h6> -->
+          <!-- <div class="row my-3">
+
+            <div class="col-12 col-md-6 form-group">
+
+              <input
+                formControlName="addressTitle"
+                type="text"
+                class="form-control"
+                placeholder="Address Title"
+                autocomplete="off"
+              />
+
+              <div
+                class="error-messages"
+                *ngIf="regf.addressTitle.errors && regf.addressTitle.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.addressTitle.errors.required"
+                >
+                  Address title is required.
+                </div>
+
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.addressTitle.errors.minlength"
+                >
+                  Address title minimum characters is
+                  {{ regf.addressTitle.errors.minlength.requiredLength }}, we
+                  have {{ regf.addressTitle.errors.minlength.actualLength }}.
+                </div>
+
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.addressTitle.errors.maxlength"
+                >
+                  Address title maximum characters is
+                  {{ regf.addressTitle.errors.maxlength.requiredLength }}, we
+                  have {{ regf.addressTitle.errors.maxlength.actualLength }}.
+                </div>
+
+              </div>
+
+            </div>
+
+            <div class="col-12 col-md-6 form-group">
+              <input
+                formControlName="street"
+                type="text"
+                class="form-control"
+                placeholder="Street"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.street.errors && regf.street.touched"
+              >
+                <div class="invalid-message" *ngIf="regf.street.errors.required">
+                  Street is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.street.errors.minlength"
+                >
+                  Street minimum characters is
+                  {{ regf.street.errors.minlength.requiredLength }}, we have
+                  {{ regf.street.errors.minlength.actualLength }}.
+                </div> 
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.street.errors.maxlength"
+                >
+                  Street maximum characters is
+                  {{ regf.street.errors.maxlength.requiredLength }}, we have
+                  {{ regf.street.errors.maxlength.actualLength }}.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row my-3">
+            <div class="col-12 col-md-6 form-group">
+              <input
+                formControlName="nearestLandmark"
+                type="text"
+                class="form-control"
+                placeholder="Nearest Landmark"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="
+                  regf.nearestLandmark.errors && regf.nearestLandmark.touched
+                "
+              >
+                <div class="invalid-message" *ngIf="regf.nearestLandmark.errors.required">
+                  Nearest Landmark is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.nearestLandmark.errors.minlength"
+                >
+                  Nearest Landmark minimum characters is
+                  {{ regf.nearestLandmark.errors.minlength.requiredLength }}, we
+                  have {{ regf.nearestLandmark.errors.minlength.actualLength }}.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.nearestLandmark.errors.maxlength"
+                >
+                  Nearest Landmark maximum characters is
+                  {{ regf.nearestLandmark.errors.maxlength.requiredLength }}, we
+                  have {{ regf.nearestLandmark.errors.maxlength.actualLength }}.
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6 form-group">
+              <select
+                formControlName="districts"
+                placeholder="districts"
+                class="form-control"
+              >
+                <option value="" disabled selected>Select District</option>
+                <option
+                  *ngFor="let district of districts"
+                  [value]="district.id"
+                  >{{ district.name }}</option
+                >
+                  <option value="" disabled selected>Select District</option>
+                  <option
+                    *ngFor="let district of districts"
+                    [value]="district.id"
+                    >{{ district.name }}</option
+                  >
+                </select>
+                <div
+                  class="error-messages"
+                  *ngIf="regf.districts.errors && regf.districts.touched"
+                >
+                  <div
+                    class="invalid-message"
+                    *ngIf="regf.districts.errors.required"
+                  >
+                    District is required.
+                  </div>
+                </div>
+              </div>
+            </div> -->
+
+          <div class="row justify-content-center">
+            <div class="col-12 col-sm-8 col-md-6">
+              <button
+                class="btn btn-danger btn-block loginButtonModal mt-2"
+                type="submit"
+                style="font-size: 20px;"
+                [disabled]="registerForm.invalid"
+              >
+                Regsiter
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="modal-footer" style="margin: auto;">
+        <p class="LoginHelp text-center">
+          Already have an account?
+          <a
+            class="RegisterModal"
+            data-toggle="modal"
+            data-target="#LoginModel"
+            id="--to-login-modal"
+            (click)="ShowLoginModal(); modalFromModal$.next(true)"
+          >
+            Login
+          </a>
+          <!--  -->
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<!--RegisterTemplate-->
+<!--Search Modal-->
+<div
+  class="modal fade"
+  id="SearchModel"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="SearchModel"
+  aria-hidden="true"
+>
+  <!-- <div
+      class="modal-dialog modal-dialog-centered"
+      role="document"
+      id="search-modal"
+    >
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5
+            class="modal-title"
+            id="register--modal-title"
+            style="margin: auto;"
+          >
+            <img src="/assets/img/logo/red-logo.png" />
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+            #closeRegisterModal
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body m-1">
+          <form class="example-form">
+            <mat-form-field class="autocomplete-fullwidth">
+              <input
+                type="text"
+                id='input1'
+                autofocus
+                placeholder="What are you looking for ? ..."
+                aria-label="Number"
+                matInput
+                [formControl]="autocompleteProduct"
+                [matAutocomplete]="auto"
+                (keyup.enter)="search($event)"
+              />
+              <mat-autocomplete #auto="matAutocomplete">
+                <mat-option
+                  *ngFor="let option of (filteredOptions | async)"
+                  [value]="option.name_en"
+                >
+                  <div class="d-flex" [routerLink]="'/product/' + option.id">
+                    <img [src]="option.images[0]" />
+                    <h6>{{ option.name_en }}</h6>
+                  </div>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+          </form>
+        </div>
+      </div>
+    </div> -->
+</div>

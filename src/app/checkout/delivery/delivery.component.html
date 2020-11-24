@@ -1,0 +1,544 @@
+<div class="container mt-5 mb-5 pl-3" *ngIf="!noItemsInCart || confirmStage">
+  <div class="BreadCrumbs">
+    <nav>
+      <p>
+        <a routerLink="/cart">
+          <i class="fas fa-chevron-left" style="color: #f15758;"></i>
+          &nbsp; Back To Cart
+        </a>
+      </p>
+
+      <div class="col-lg-6" id="--steper-flags-container">
+        <br />
+        <div class="row">
+          <div class="col-md-3">
+            <span class="circle active">1</span>Shipping
+          </div>
+          <div class="col-md-2"><hr class="divider activeDidiver" /></div>
+          <div class="col-md-3">
+            <span
+              class="circle"
+              [class.active]="paymentMethodStage || confirmStage"
+              >2</span
+            >Payment
+          </div>
+          <div class="col-md-2">
+            <hr
+              class="divider"
+              [class.activeDidiver]="paymentMethodStage || confirmStage"
+            />
+          </div>
+          <div class="col-md-2">
+            <span class="circle" [class.active]="confirmStage">3</span
+            >Confirmation
+          </div>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+  <div class="row --checkout-error-message" *ngIf="deliveryTimeForm.invalid && submitted">
+    <div class="col-12">
+      <span class="m-0 text-center --color-red display-5 d-block">
+        You have fill required field to proceed.
+      </span>
+    </div>
+  </div>
+
+  <div class="row --checkout-error-message" *ngIf="this.checkoutState.error">
+      <div class="col-12">
+        <span class="m-0 text-center --color-red display-5 d-block">
+          {{this.checkoutState.error}}
+        </span>
+      </div>
+    </div>
+
+</div>
+
+<div class="container" id="--checkout-steps-container" *ngIf="!noItemsInCart || confirmStage">
+  <!--Left Box-->
+  <div class="row" 
+  [ngStyle]="{
+    'min-width': confirmStage ? '100%' : '48%'
+  }">
+    <div class="col-lg-12 MainBox" [hidden]="confirmStage">
+      <!-- Delivery date -->
+      <div class="CartLeftContainer w-100" [hidden]="!checkoutStage">
+        <!-- (change)="loadDeliveryTime()"
+                (ngSubmit)="loadDeliveryTime()" -->
+        <form
+          id="--form-delivry-time"
+          [formGroup]="deliveryTimeForm"
+          (ngSubmit)="submitDelviryTimeForm()"
+        >
+          <div class="row">
+            <div class="col-12 d-flex justify-content-between mb-2">
+              <p class="Header m-0 --din-mid strech">Select address.</p>
+              <button
+                type="button"
+                class="d-block --main-btn --rounded"
+                id="--add-new-addre-btn"
+                (click)="openAddAddressDialog()"
+              >
+                +
+              </button>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <select
+                name="addresses"
+                id="--addresses-select"
+                class="form-control"
+                (change)="addressSelected($event)"
+                formControlName="address_id"
+                [ngClass]="{
+                  '--border-red':
+                    deliveryTimeForm.get('address_id').touched &&
+                    deliveryTimeForm.get('address_id').errors
+                }"
+              >
+                <!-- <optgroup> -->
+                <option selected disabled value="">Choose Address</option>
+                <!-- [selected]="i == 0" -->
+                <option
+                  [value]="(address)?.address_id"
+                  *ngFor="let address of addresses; let i = index;"
+                >
+                  {{ (address)?.street + ", " + (address)?.city }}
+                  <!--  
+                    +
+                    ", " +
+                    (address)?.district_name
+                  -->
+                </option>
+                <!-- </optgroup> -->
+              </select>
+              <div
+                class="--error-box"
+                *ngIf="
+                  deliveryTimeForm.get('address_id').touched &&
+                  deliveryTimeForm.get('address_id').errors
+                "
+              >
+                <p class="--error-message --color-red">
+                  Address is required.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <p class="Header --din-mid strech ">Enter Your Delivery Time</p>
+          <div class="row">
+            <div class="col-12 --date-picker">
+              <!-- <select class="form-control" (change)="loadDeliveryTime(address)">
+                        <option selected disabled>Day</option>
+                        <option>Saturday</option>
+                        <option>Sunday</option>
+                        <option>Monday</option>
+                        <option>Tuesday</option>
+                        <option>Wednesday</option>
+                        <option>Thursday</option>
+                        <option>Friday</option>
+                      </select> -->
+              <input
+                matInput
+                class="form-control"
+                [matDatepicker]="picker"
+                formControlName="delivery_date"
+                placeholder="Choose a date"
+                (click)="picker.open()"
+                [min]="dateNow"
+                (dateChange)="loadDeliveryTime($event)"
+                [ngClass]="{
+                  '--border-red':
+                    deliveryTimeForm.get('delivery_date').touched &&
+                    deliveryTimeForm.get('delivery_date').errors
+                }"
+              />
+              <!--  -->
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker [startAt]="minDate" 
+              ></mat-datepicker>
+              <div
+                class="--error-box"
+                *ngIf="
+                  deliveryTimeForm.get('delivery_date').touched &&
+                  deliveryTimeForm.get('delivery_date').errors
+                "
+              >
+                <p class="--error-message --color-red">
+                  Date is required.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">
+              <select
+                class="form-control mt-4"
+                formControlName="time_section_id"
+                [ngClass]="{
+                  '--border-red':
+                    deliveryTimeForm.get('time_section_id').touched &&
+                    deliveryTimeForm.get('time_section_id').errors
+                }"
+              >
+                <option selected disabled>Select Time</option>
+                <option
+                  [value]="time['id']"
+                  *ngFor="let time of timeSections"
+                  >{{ time?.name }}</option
+                >
+              </select>
+              <div
+                class="--error-box"
+                *ngIf="
+                  deliveryTimeForm.get('time_section_id').touched &&
+                  deliveryTimeForm.get('time_section_id').errors
+                "
+              >
+                <p class="--error-message --color-red">
+                  Time is required.
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Delivery date -->
+
+      <!-- payment method -->
+      <div class="CartLeftContainer w-100 pl-5" [hidden]="!paymentMethodStage">
+        <p class="Header --din-mid strech">Select your Payment Method</p>
+
+        <form class="mb-5">
+          <div
+            class="input-group"
+            style="border: 1px solid #426f9b;border-radius: 5px;"
+          >
+            <div class="input-group-prepend">
+              <div class="input-group-text" style="background: transparent;">
+                <input
+                  name="paymentMethod"
+                  type="radio"
+                  aria-label="Radio button for following text input"
+                  (change)="paymentMethodChange($event)"
+                  id="--credit-card"
+                  disabled
+                />
+              </div>
+            </div>
+            <input
+              type="text"
+              disabled
+              class="form-control Transparent"
+              aria-label="Text input with radio button"
+              value="Credit Or Debit Card"
+            />
+            <img
+              src="../../../assets/img/payment/visa.png"
+              style="position: absolute; right:10px;top: 8px;"
+            />
+            <img
+              src="../../../assets/img/payment/master.png"
+              style="position: absolute; right:60px;top: 8px;"
+            />
+          </div>
+          <br />
+          <div
+            class="input-group"
+            style="border: 1px solid #426f9b;border-radius: 5px;"
+          >
+            <div class="input-group-prepend">
+              <div class="input-group-text" style="background: transparent;">
+                <input
+                  style="background: transparent;"
+                  name="paymentMethod"
+                  type="radio"
+                  aria-label="Radio button for following text input"
+                  (change)="paymentMethodChange($event)"
+                  id="--cash"
+                  checked
+                />
+              </div>
+            </div>
+            <input
+              type="text"
+              disabled
+              class="form-control Transparent"
+              aria-label="Text input with radio button"
+              value="Cash on Delivery"
+            />
+          </div>
+
+          <div id="--credit-card-container" *ngIf="credit">
+            <form
+              [formGroup]="creditForm"
+              (ngSubmit)="checkoutByCredit()"
+              id="--form-credit-card"
+              class="row"
+            >
+              <div class="col-12 --credit-field">
+                <input
+                  type="text"
+                  class="--credit-input form-control"
+                  placeholder="Card Number"
+                  formControlName="card-number"
+                />
+                <div
+                  class="--field-error-container"
+                  *ngIf="
+                    creditF['card-number'].touched &&
+                    creditF['card-number'].errors
+                  "
+                >
+                  <p *ngIf="creditF['card-number'].errors.required">
+                    Card Number is required.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-12 --credit-field">
+                <input
+                  type="text"
+                  class="--credit-input form-control"
+                  placeholder="Expiry Date (MMYY)"
+                  formControlName="expiry-date"
+                />
+                <div
+                  class="--field-error-container"
+                  *ngIf="
+                    creditF['expiry-date'].touched &&
+                    creditF['expiry-date'].errors
+                  "
+                >
+                  <p *ngIf="creditF['expiry-date'].errors.required">
+                    Expiry Date is required.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-12 --credit-field">
+                <input
+                  type="text"
+                  class="--credit-input form-control"
+                  placeholder="Card Holder Name"
+                  formControlName="card-holder-name"
+                />
+                <div
+                  class="--field-error-container"
+                  *ngIf="
+                    creditF['card-holder-name'].touched &&
+                    creditF['card-holder-name'].errors
+                  "
+                >
+                  <p *ngIf="creditF['card-holder-name'].errors.required">
+                    Card Holder Name is required.
+                  </p>
+                </div>
+              </div>
+
+              <div class="col-12 --credit-field">
+                <input
+                  type="text"
+                  class="--credit-input form-control"
+                  placeholder="Security Code"
+                  formControlName="security-code"
+                />
+                <div
+                  class="--field-error-container"
+                  *ngIf="
+                    creditF['security-code'].touched &&
+                    creditF['security-code'].errors
+                  "
+                >
+                  <p *ngIf="creditF['security-code'].errors.required">
+                    Security Code Name is required.
+                  </p>
+                </div>
+              </div>
+            </form>
+          </div>
+        </form>
+
+        <p class="Header mt-5">Add your Promo Code</p>
+        <form>
+          <div class="input-group mb-3 pr-0 pl-3 row">
+            <input
+              style="background-color: transparent; border-radius: 5px;border: 1px solid #426f9b;"
+              type="text"
+              class="form-control col-9"
+              [(ngModel)]="promoCode.value"
+              #promo="ngModel"
+              name="promo-code"
+              placeholder="Enter Your Promo code"
+            />
+
+            <div class="offset-1"></div>
+            <button class="btn btn-danger col-2" (click)="checkPromoCodeValidity(promo)">
+            <span class="d-block --check-icon text-center" style="margin: 0 auto;">
+                <!-- <div class=""></div> -->
+            </span>
+              <!-- <div *ngIf="!promoCode.loading && !promoCode.error">
+                <i class="fas fa-check"> </i>
+              </div>
+              <div *ngIf="promoCode.loading">
+                <i class="fas fa-spinner"></i>
+              </div>
+              <div *ngIf="promoCode.error && !promoCode.loading && !promoCode.success">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div> -->
+            </button>
+
+          </div>
+          <div class="row">
+            <div class="col-12">
+              <div class="--error-msg" *ngIf="promoCode.error">
+                <p>{{ promoCode.error }}</p>
+              </div>
+
+              <div
+                class="--success-msg"
+                *ngIf="promoCode.success as promoResult"
+              >
+                <p>Discount: {{ promoResult.discount_rate }} EGP</p>
+                <p>Discount Type: {{ promoResult.discount_type }}</p>
+                <p>
+                  {{
+                    promoResult.has_free_shipping
+                      ? "has free shipping : Yes"
+                      : "has free shipping : No"
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- payment method -->
+    </div>
+
+    <div class="col-12 MainBox --bg-confirm-stage" [hidden]="!confirmStage">
+      <!-- Confirm stage -->
+      <div class="CartLeftContainer w-100 pl-5">
+        <p class="Header --dineng-regular">Order Is Confirmed !</p>
+        <p class="m-0" style="color: #657c92 !important; font-size:1.2rem;">
+          Your payment of {{ cart?.totalPrice }} EGP has been successfully
+          processed!
+        </p>
+        <p class="m-0" style="color: #657c92 !important; font-size:1.2rem;">
+          An order confirmation has been sent to: {{ userInfo?.email }}
+        </p>
+        <p class="Header mt-5 --dineng-regular">Order Details</p>
+
+        <div class="row">
+          <div class="col-6 p-3 pr-5">
+            <span class="float-eft detailHead">Shipping To</span>
+            <div class="info">
+              {{ userInfo?.name }} <br />
+              {{ deliveryAddress?.street + ", " + deliveryAddress?.city + ", Egypt" }}
+              <!-- 
+                 +
+                  ", " +
+                  deliveryAddress?.district_name +
+                  "
+               -->
+            </div>
+          </div>
+
+          <div class="col-6 p-3 pl-5">
+            <span class="float-eft detailHead">Payment Detail</span>
+            <div class="info">
+              {{ checkoutQuery?.payment_method }}
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-6 p-3 pr-5">
+            <span class="float-eft detailHead">Mobile Number</span>
+            <div class="info">
+              {{ userInfo?.phone }}
+            </div>
+          </div>
+
+          <!-- Credit CARD transaction -->
+          <!-- <div class="col-6 p-3 pl-5">
+                      <span class="float-eft detailHead">Transaction Number</span>
+                      <div class="info">
+                        139750xxxxxxx
+                      </div>
+                    </div> -->
+        </div>
+      </div>
+      <!-- Confirm stage -->
+    </div>
+  </div>
+
+  <!--Right Box-->
+  <div class="row d-block">
+    <div class="col-lg-12 MainBox" [hidden]="confirmStage">
+      <app-order-summary
+        *ngIf="cart.products.length"
+        [cart]="cart"
+        [checkoutPage]="true"
+        class="w-100"
+      >
+        <a
+          style="display:block; font-size: 1.5rem;"
+          (click)="checkoutSteper()"
+          class="--main-btn mt-1"
+        >
+          <span
+            class="--din-bold"
+            style="color: inherit; font-size: inherit;">
+            proceed to checkout
+          </span>
+
+          <!-- *ngIf="
+              !checkoutState.loading &&
+              !checkoutState.success &&
+              !checkoutState.fail" -->
+
+          <!-- <span
+            *ngIf="
+              checkoutState.loading &&
+              !checkoutState.success &&
+              !checkoutState.fail
+            "
+          >
+            <i class="fas fa-spinner"></i>
+          </span>
+
+          <span *ngIf="checkoutState.success">
+            <i class="fas fa-check"> </i>
+          </span>
+
+          <span *ngIf="checkoutState.fail">
+            <i class="fas fa-exclamation-triangle"></i>
+          </span> -->
+        </a>
+      </app-order-summary>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="noItemsInCart && !confirmStage" id="--no-items-in-cart-container">
+  <div class="--no-items-content">
+      <p class="p-0 m-0 text-center">
+          No items in cart
+      </p>
+      <button class="--main-btn" type="button" [routerLink]="['/categories']">Continue Shopping</button>
+  </div>
+</div>
+
+<!-- START:: Payment Method -->
+
+<!--[hidden]="checkoutStage || confirmStage"-->

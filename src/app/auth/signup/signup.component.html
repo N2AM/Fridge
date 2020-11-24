@@ -1,0 +1,302 @@
+<div
+  class="modal fade"
+  id="--signup-modal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="RegisterModel"
+  aria-hidden="true"
+>
+  <div
+    class="modal-dialog modal-dialog-centered"
+    role="document"
+    id="register-modal"
+  >
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5
+          class="modal-title"
+          id="register--modal-title"
+          style="margin: auto;"
+        >
+          <img
+            src="/assets/img/logo/red-logo.png"
+            class="pl-5 ml-5 pt-2 pb-2"
+          />
+        </h5>
+      </div>
+      <div class="modal-body m-1">
+        <form
+          [formGroup]="registerForm"
+          (ngSubmit)="register()"
+          class="container"
+          *ngIf="registerForm"
+        >
+          <div class="row">
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="firstName"
+                type="text"
+                class="form-control"
+                placeholder="First Name"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.firstName.invalid && regf.firstName.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.firstName.errors.required"
+                >
+                  firstname is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.firstName.errors.minlength"
+                >
+                  firstname must be greater than 3 chars.
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="lastName"
+                type="text"
+                class="form-control"
+                placeholder="Last Name"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.lastName.invalid && regf.lastName.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.lastName.errors.required"
+                >
+                  Last Name is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.lastName.errors.minlength"
+                >
+                  Last Name must be greater than 3 chars.
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="email"
+                type="text"
+                class="form-control"
+                placeholder="Email"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.email.invalid && regf.email.touched"
+              >
+                <div class="invalid-message" *ngIf="regf.email.errors.email">
+                  Invalid email.
+                </div>
+                <div class="invalid-message" *ngIf="regf.email.errors.required">
+                  Email is required.
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="mobile"
+                type="text"
+                class="form-control"
+                placeholder="Mobile Number"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.mobile.invalid && regf.mobile.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.mobile.errors.required"
+                >
+                  Mobile number is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.mobile.errors.minlength"
+                >
+                  mobile must be at least 11 numbers.
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="password"
+                type="password"
+                class="form-control"
+                placeholder="Password"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.password.invalid && regf.password.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.password.errors.required"
+                >
+                  Password is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.password.errors.minlength"
+                >
+                  Password must be at least 8 chars.
+                </div>
+              </div>
+            </div>
+            <div class="form-group col-12 col-md-6">
+              <input
+                formControlName="confirmPassword"
+                type="password"
+                class="form-control"
+                placeholder="confirm password"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="
+                  regf.confirmPassword.invalid && regf.confirmPassword.touched
+                "
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.confirmPassword.errors.required"
+                >
+                  confirmPassword is required.
+                </div>
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.confirmPassword.errors.minlength"
+                >
+                  confirmPassword must be at least 8 chars.
+                </div>
+              </div>
+              <div
+                class="error-messages"
+                *ngIf="regf.confirmPassword.errors?.mustMatch"
+              >
+                <div class="invalid-message">
+                  Passwords must match.
+                </div>
+              </div>
+            </div>
+          </div>
+          <h6>Address List</h6>
+          <div class="row my-3">
+            <div class="col-12 col-md-6">
+              <input
+                formControlName="addressTitle"
+                type="text"
+                class="form-control"
+                placeholder="Address Title"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.addressTitle.invalid && regf.addressTitle.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.addressTitle.errors.required"
+                >
+                  Address title is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <input
+                formControlName="street"
+                type="text"
+                class="form-control"
+                placeholder="Street"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="regf.street.invalid && regf.street.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.street.errors.required"
+                >
+                  Street is required.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row my-3">
+            <div class="col-12 col-md-6">
+              <input
+                formControlName="nearestLandmark"
+                type="text"
+                class="form-control"
+                placeholder="Nearest Landmark"
+                autocomplete="off"
+              />
+              <div
+                class="error-messages"
+                *ngIf="
+                  regf.nearestLandmark.invalid && regf.nearestLandmark.touched
+                "
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.nearestLandmark.errors.required"
+                >
+                  Nearest Landmark is required.
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-md-6">
+              <select
+                formControlName="districts"
+                placeholder="districts"
+                class="form-control"
+              >
+                <option value="" disabled selected>Select District</option>
+                <option
+                  *ngFor="let district of districts"
+                  [value]="district.id"
+                  >{{ district.name }}</option
+                >
+              </select>
+              <div
+                class="error-messages"
+                *ngIf="regf.districts.invalid && regf.districts.touched"
+              >
+                <div
+                  class="invalid-message"
+                  *ngIf="regf.districts.errors.required"
+                >
+                  district is required.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button class="btn btn-danger btn-block RegisterButton" type="submit">
+            Regsiter
+          </button>
+        </form>
+      </div>
+      <div class="modal-footer" style="margin: auto;">
+        <p class="LoginHelp text-center">
+          Already have an account? <a class="RegisterModal"> Login </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

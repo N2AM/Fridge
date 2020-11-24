@@ -1,0 +1,32 @@
+.bg-p {
+  background-color: #f15758;
+}
+.step {
+  position: relative;
+
+  &:last-child {
+    justify-content: flex-start !important;
+  }
+  &:first-child {
+    justify-content: flex-end !important;
+  }
+  &:not(:last-child)::after {
+    content: '';
+    position: relative;
+    width: 50%;
+    height: 1px;
+    background-color: white;
+    top: 0%;
+    display: inline-block;
+  } 
+  &:not(:first-child)::before {
+    content: '';
+    position: relative;
+    width: 50%;
+    height: 1px;
+    left:0;
+    background-color: white;
+    top: 0%;
+    display: inline-block;
+  } 
+}

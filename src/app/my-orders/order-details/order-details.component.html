@@ -1,0 +1,70 @@
+<div class="container mt-5 mb-5 pl-3">
+  <div class="BreadCrumbs">
+    <nav>
+      <p><a routerLink="/">Home </a></p>
+      <p class="mt-1">
+        <a routerLink="/orders">
+          <i class="fas fa-chevron-right"></i> &nbsp;My Orders
+        </a>
+        <a routerLink="/orders">
+          <i class="fas fa-chevron-right"></i> &nbsp;Order Details
+        </a>
+      </p>
+    </nav>
+  </div>
+  <div *ngIf="order" class="col-lg-8 col-md-12 total-items">
+    <h3>Total ({{ order.cart.length }}) items.</h3>
+    <ul>
+      <li class="Order-item row">
+        <span class="col-md-4 col-sm-4 col-4">Order no </span>
+        <span class="order-details col-md-4 col-sm-4 col-4">{{
+          order.order_id
+        }}</span>
+      </li>
+      <li class="Order-item row">
+        <span class="col-md-4 col-sm-4 col-4">Order Date </span>
+        <span class="order-details col-md-4 col-sm-4 col-4">{{
+          order.date
+        }}</span>
+      </li>
+      <li class="Order-item row">
+        <span class="col-md-4 col-sm-4 col-4">Total Amount </span>
+        <span class="order-details col-md-4 col-sm-4 col-4"
+          > {{ order.final_total_price }} EGP</span
+        >
+      </li>
+    </ul>
+  </div>
+  <div *ngIf="order" class="col-md-12">
+    <h3>Items</h3>
+    <div class="row">
+      <div
+        class="col-md-6 col-sm12 col-12 items"
+        *ngFor="let product of order.cart"
+      >
+        <img class="col-md-3 col-sm-12 col-12" [src]="product.images" />
+        <ul class="col-md-9 col-sm-12 col-12">
+          <li class="Order-item row">
+            <span class="col-sm-2">Quantity </span>
+            <span class="order-details col-md-4 col-sm-4 ">{{
+              product.qty
+            }}</span>
+          </li>
+          <li class="Order-item row">
+            <span class="col-sm-2">Unit Price </span>
+            <span class="order-details col-md-4 col-sm-4">{{
+              product.standard_rate
+            }}</span>
+          </li>
+          <li class="Order-item row">
+            <span class="col-sm-2">Subtotal </span>
+            <span class="order-details col-md-4 col-sm-4"
+              > {{ product.total_price }} EGP</span
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- <button class="btn col-md-6" (click)="reorder(order)">Reorder</button> -->
+  </div>
+</div>

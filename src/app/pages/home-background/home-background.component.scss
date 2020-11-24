@@ -1,0 +1,49 @@
+#--main-carousel {
+    @media (max-width: 768px) {
+        height: 70vh !important;
+    }
+    @media (max-width: 580px){
+        height: 50vh !important;
+    }
+
+    @media (max-width: 520px){
+        height: 45vh !important;
+    }
+    
+    max-height: 625px;
+
+    .carousel-inner{
+        max-height: 625px;
+        overflow: hidden;
+
+
+    }
+}
+
+
+owl-carousel {
+    z-index: 2;
+}
+.--app-ios-andriod-container {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -40%);
+    left: 50%;
+    color: white;
+    z-index: 2;
+}
+
+.thumbnail-image {
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left:0;
+        bottom: 0;
+        right: 0;
+        z-index: 1;
+        background-color: rgba(0,0,0,.6)
+    }
+}

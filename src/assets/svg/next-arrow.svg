@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="26.949" height="26.952" viewBox="0 0 26.949 26.952">
+    <defs>
+        <style>
+            .cls-1{fill:#f15758}.cls-2{clip-path:url(#clip-path)}
+        </style>
+        <clipPath id="clip-path">
+            <path id="Rectangle_354" d="M0 0h26.949v26.952H0z" class="cls-1" data-name="Rectangle 354"/>
+        </clipPath>
+    </defs>
+    <g id="Group_3308" data-name="Group 3308" transform="translate(-477 -302.89)">
+        <g id="Group_3307" data-name="Group 3307" transform="translate(477 302.89)">
+            <g id="Group_3306" class="cls-2" data-name="Group 3306">
+                <path id="Path_9582" d="M503.168 311.8a13.471 13.471 0 1 0-25.379 9.047.548.548 0 0 0 1.033-.368 12.374 12.374 0 1 1 5.309 6.468.548.548 0 1 0-.562.941 13.471 13.471 0 0 0 19.6-16.089zm0 0" class="cls-1" data-name="Path 9582" transform="translate(-477 -302.847)"/>
+            </g>
+        </g>
+        <path id="Path_9583" d="M533.408 416.589a.549.549 0 0 0-.548-.548H519.2a.548.548 0 0 0 0 1.1h13.656a.549.549 0 0 0 .548-.548zm0 0" class="cls-1" data-name="Path 9583" transform="translate(-36.898 -100.226)"/>
+        <path id="Path_9584" d="M608.3 374.846a.548.548 0 0 0 .775.775l6.125-6.121a.549.549 0 0 0 0-.776l-6.123-6.123a.548.548 0 1 0-.775.775l5.735 5.735zm0 0" class="cls-1" data-name="Path 9584" transform="translate(-116.161 -52.748)"/>
+    </g>
+</svg>

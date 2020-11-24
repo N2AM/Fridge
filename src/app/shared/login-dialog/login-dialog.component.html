@@ -1,0 +1,25 @@
+<div class="--dialog-container">
+  <div class="--text-box text-left">
+    <p class="--data-msg">{{ data.msg }}</p>
+  </div>
+  <div class="--buttons-box" *ngIf="data.confirmButtons">
+    <button class="--main-btn" [mat-dialog-close]="true">Yes</button>
+    <button class="--main-btn" [mat-dialog-close]="false">No</button>
+  </div>
+
+  <div class="--buttons-box" *ngIf="data.loginButtons">
+    <button
+      class="--main-btn"
+      [mat-dialog-close]="true"
+      (click)="openLoginDialog()"
+    >
+      login
+    </button>
+    <button class="--main-btn" [mat-dialog-close]="false">cancel</button>
+  </div>
+
+  <div class="--just-ok-box" *ngIf="data.justOk">
+    <div *ngIf="message">{{ message }}</div>
+    <button class="--main-btn" [mat-dialog-close]="false">OK</button>
+  </div>
+</div>

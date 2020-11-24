@@ -1,0 +1,15 @@
+@import '../../../assets/scss/colors';
+
+.--not-found-container{
+    .--not-found-title{
+        .--not-found-message{
+            color: $grey;
+            font-size: 1.6rem;
+            @media(max-width: 991px){
+                font-size: 1rem;
+            }
+        }
+    }
+}
+
+

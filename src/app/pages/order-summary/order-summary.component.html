@@ -1,0 +1,28 @@
+<!--Right Box-->
+  <div class="pl-5">
+    <p class="options --din-mid --main-color strech" style="font-size: 1.3rem;">Order Summary</p>
+    <div class="orderSummar">
+      <span class="float-left summaryTag">Sub Total</span>
+      <span class="float-right SummaryValue --gilory-bold"> {{(cart)?.totalPrice}} EGP</span>
+      <div class="clearfix"></div>
+      <span class="float-left summaryTag">Delivery Fees</span>
+      <span class="float-right SummaryValue --gilory-bold">
+         {{shippingRate.rate ? shippingRate.rate : '0'}} EGP
+      </span>
+      <div class="clearfix "></div>
+      <hr class="divider mb-3">
+      <span class="float-left summaryTag SummaryValue --gilory-bold" style="font-size: 1.2rem;">Grand Total</span>
+      <span class="float-right SummaryValue --gilory-bold">
+         {{shippingRate.rate ? (shippingRate.rate + (cart)?.totalPrice) : (cart)?.totalPrice }} EGP
+      </span>
+    </div>
+    <div class="clearfix mb-5"></div>
+    <nav>
+      <div *ngIf="!checkoutPage">
+        <a style="display:block; font-size: 1.5rem;" [routerLink]="['/checkout']" class="--main-btn">proccess to checkout</a>
+      </div>
+      <div>
+        <ng-content></ng-content>
+      </div>
+    </nav>
+  </div>

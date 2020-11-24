@@ -1,0 +1,35 @@
+img {
+  width: 230px;
+  object-fit: contain;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  object-fit: cover;
+  height: 230px;
+  padding: 5px;
+  border: 5px solid #ccc;
+}
+h3 {
+  font-size: 30px;
+  color: #657c92;
+  font-weight: 800;
+  cursor: pointer;
+  text-align: center;
+  padding-top: 20px;
+}
+a {
+  text-decoration: none;
+  color: #f15758;
+  font-size: 20px;
+}
+
+@media only screen and (max-width) {
+}
+
+img:hover {
+  border: 5px solid #f15758;
+  box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+  transition: 0.3s border ease-in-out;
+  cursor: pointer;
+}

@@ -1,0 +1,446 @@
+/* Angular Material theme */
+// @import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "./assets/scss/utils";
+@import "./assets/scss/animation";
+@import "./assets/scss/star-rating"; // for rating stars lib.
+// @import "~bootstrap/dist/css/bootstrap.css";
+/* You can add global styles to this file, and also import other style files */
+
+// Components external styles
+@import "components/offer.style.component.scss";
+@import "components/header.style.component.scss";
+// @import "components/productSlider.style.component.scss";
+
+@import "./assets/scss/components/responsive/offers.component.responsive.scss";
+
+/* @font-face {
+  font-family: 'gilory-light';
+  src: url('./assets/fonts/Gilroy-Light.otf');
+} */
+
+// Router outelet styles
+
+// Router outelet styles
+
+@font-face {
+  font-family: gilory-light;
+  src: url("./assets/fonts/Gilroy-Light.otf");
+}
+
+@font-face {
+  font-family: gilory-bold;
+  src: url("./assets/fonts/Gilroy-ExtraBold.otf");
+}
+
+@font-face {
+  font-family: din;
+  src: url("./assets/fonts/DIN-Medium.ttf");
+  font-weight: 500;
+}
+@font-face {
+  font-family: din;
+  src: url("./assets/fonts/DIN-Regular.ttf");
+  font-weight: 400;
+}
+@font-face {
+  font-family: din;
+  src: url("./assets/fonts/DIN-Bold.ttf");
+  font-weight: 600;
+}
+@font-face {
+  font-family: din;
+  src: url("./assets/fonts/DIN-BlackAlternate.ttf");
+  font-weight: 800;
+}
+
+@font-face {
+  font-family: din;
+  src: url("./assets/fonts/DIN-RegularAlternate.ttf");
+  font-weight: 100;
+}
+
+// @font-face {
+//   font-family: dineng;
+//   src: url("./assets/fonts/DINEngschrift-Regular.ttf");
+// }
+
+@font-face {
+  font-family: dineng;
+  src: url("./assets/fonts/DINEngschriftLT-Alternate.woff2") format("woff2"),
+    url("./assets/fonts/DINEngschriftLT-Alternate.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+label,
+strong,
+button,
+a,
+ul,
+li,
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+select::-webkit-input-placeholder,
+div {
+  font-family: gilory-light;
+}
+a,
+button,
+input,
+select,
+textarea,
+div {
+  outline: none !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    text-decoration: none !important;
+    outline: none !important;
+    box-shadow: unset !important;
+  }
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder,
+select::-webkit-input-placeholder {
+  opacity: 0.5 !important;
+}
+
+// overriding on bootstrap
+.form-control {
+  &:hover,
+  &:focus,
+  &:active {
+    box-shadow: unset !important;
+  }
+}
+// overriding on bootstrap
+
+body {
+  overflow-x: hidden;
+}
+#all-container {
+  min-height: calc(100vh - 240px) !important;
+}
+@media (max-width: 991px) {
+  /* body{
+    padding-top: 82px
+  } */
+}
+
+.invalid-message {
+  color: red;
+  font-size: 0.8rem;
+}
+
+/* Category.component CAOUSEL */
+#--category-carousel .owl-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin: 0rem !important;
+
+  button {
+    width: 16px;
+    height: 26px;
+    margin: 0rem !important;
+
+    & > div {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .--next-indicator {
+      left: 105%;
+    }
+    .--prev-indicator {
+      right: 105%;
+    }
+  }
+}
+
+#--category-carousel .owl-item {
+  padding: 0.5rem;
+}
+/* #--category-carousel .owl-item:first-child{
+  margin-left: .4rem;
+} */
+/* Category.component CAOUSEL */
+
+/* ===========> ProductSlider.component styling <============= */
+/* ===========> ProductSlider.component styling <============= */
+.owl-nav {
+  position: absolute;
+  top: -51px;
+  right: 0px;
+}
+
+.owl-nav button {
+  background: none !important;
+  cursor: pointer !important;
+  outline: none !important;
+}
+.owl-next.disabled,
+.owl-prev.disabled {
+  cursor: not-allowed !important;
+}
+/* ===========> ProductSlider.component styling <============= */
+/* ===========> ProductSlider.component styling <============= */
+
+html,
+body {
+  height: 100%;
+  // min-height: calc(100vh - 313px)
+  // &::-webkit-scrollbar {
+  //   width: 1em;
+  // }
+  // ::-webkit-scrollbar-track {
+  //   background-color: red;
+  //   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  // }
+  // &::-webkit-scrollbar-thumb {
+  //   background-color: darkgrey;
+  //   outline: 1px solid slategrey;
+  // }
+}
+body {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  margin: 0;
+  font-family: gilroy-light;
+}
+
+// START:: ===================>>> Slick carousel <<<=====================
+#p-zoom .slick-list {
+  overflow: visible;
+}
+
+#multi-image {
+  .owl-item {
+    .item {
+      display: flex;
+      justify-content: center;
+    }
+  }
+}
+// END:: ===================>>> Slick carousel <<<=====================
+
+// START:: ============= >> RATING <<< ===================
+.rating {
+  outline: none;
+}
+// END:: ============= >> RATING <<< ===================
+
+.row-space {
+  display: flex;
+  justify-content: space-between;
+}
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 987 !important;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+}
+#search-modal {
+  max-width: 800px;
+}
+
+// START:: Pattern background
+.MainBox {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.5rem;
+
+  &::after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: url("./assets/img/product-background/options.png");
+    padding: 10px 0;
+    background-repeat: repeat;
+    background-size: 50%;
+    opacity: 0.3;
+  }
+
+  &.--bg-confirm-stage {
+    &::after {
+      background-size: 25%;
+    }
+  }
+}
+
+// END:: Pattern background
+
+.mat-form-field.mat-focus,
+.mat-form-field-label {
+  color: #f15758 !important;
+}
+.mat-form-field.mat-focus,
+.mat-form-field-ripple {
+  background-color: #f15758 !important;
+}
+
+@media only screen and (max-width: 425px) {
+  .dropdown-menu {
+    display: none !important;
+  }
+}
+
+// ============== >>> formgroup class <<< ===============
+.form-group {
+  position: relative;
+
+  .error-messages {
+    position: absolute;
+  }
+}
+// ============== >>> formgroup class <<< ===============
+
+// ============== >>> START modal-open, when any modal opened <<< ==============
+// Fix navbar when Opening modals
+body.modal-open {
+  #--navbar {
+    margin-right: 17px;
+  }
+}
+// ============== >>> END modal-open, when any modal opened <<< ==============
+
+// ============= HOME BACKGROUND ==================
+.--home-background owl-carousel {
+  owl-carousel-child {
+    margin: 0rem !important;
+  }
+}
+// ============= HOME BACKGROUND ==================
+
+// ============== >>> OFFERS <<< ==================
+#--new-offers-container {
+  .owl-stage,
+  owl-carousel-child {
+    max-height: 474px;
+  }
+}
+// ============== >>> OFFERS <<< ==================
+
+// =============== productSlider ===================
+.--product-slider {
+  .--headung__text {
+    font-size: 28px;
+  }
+
+  .--owl-carousel {
+    margin: 3rem 0rem;
+    .owl-nav {
+      margin-top: -12px !important;
+
+      button {
+        margin: 5px 0.5rem !important;
+      }
+    }
+  }
+}
+// =============== productSlider ===================
+
+// Product details
+#--product-details-similar-products,
+#--product-details-same-brand {
+  .owl-nav {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+
+    .--next-indicator {
+      right: -5%;
+      position: absolute;
+    }
+    .--prev-indicator {
+      left: -5%;
+      position: absolute;
+    }
+  }
+}
+
+.cdk-overlay-pane {
+  @media (min-width: 1024px) {
+    min-width: 600px !important;
+  }
+
+  @media (max-width: 991px) {
+    min-width: 500px !important;
+  }
+  @media (max-width: 768px) {
+    min-width: calc(100vw - 50%) !important;
+  }
+}
+.mat-autocomplete-panel {
+  max-width: 400px !important;
+  max-height: 400px !important;
+}
+
+// Spinner loadoing color
+.ngx-foreground-spinner {
+  color: $main-color !important;
+}
+// Spinner loadoing color
+pagination-template {
+  display: flex;
+  float: right;
+  padding: 0 !important;
+  font-size: 15px;
+  justify-content: flex-end;
+}
+pagination-template * {
+  margin: 0 7px;
+  color: #f15758;
+  :hover {
+    cursor: pointer;
+  }
+}
+.page-number {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  padding: 7px 0 0 0;
+  border: #f15758 1px solid;
+  border-radius: 50%;
+}
+.current {
+  background: #f15758;
+  span {
+    color: #fef6c5 !important;
+  }
+}
+.pagination-previous,
+.pagination-next {
+  padding-top: 7px;
+}
+
+// [id^="sub-"]:not(#sub-0) {
+//   max-height: 200px;
+//   overflow-y: scroll;
+// }

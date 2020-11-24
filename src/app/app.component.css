@@ -1,0 +1,12 @@
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+}
+.footer {
+  /* whatever you want it to be */
+  min-height: 240px; 
+  flex-grow: 0;
+}
+

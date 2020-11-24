@@ -1,0 +1,238 @@
+@import '../../../assets/scss/colors';
+.BreadCrumbs {
+  & > p {
+    line-height: 20px;
+    
+    & > i {
+      display:inline-block; width: 6.3px;  position: relative;
+
+      > i {
+        width:100%;
+        height: 100%;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+#--pro-details-quantity-container  {
+  position: relative;
+  right: 0;
+  bottom: 0px;
+  width: 100%;
+  background-color: #f15758;
+  border-radius: 0px 0px 5px 5px;
+  padding: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  font-size: 1.7rem;
+  height: 38px;
+
+  span {
+      line-height: 100%;
+      font-size: 1.3rem;
+  }
+  button {
+      background: transparent;
+      border: none;
+      outline: none;
+      color: white;
+      font-size: 1.8rem;
+      line-height: 100%;
+  }
+
+}
+
+.--no-product-box {
+    display: flex;
+    align-items: center;
+
+    .--message {
+    }
+}
+
+.Stars{
+    cursor: pointer;
+}
+.Share {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    @media(min-width: 991px){
+        justify-content: flex-end;
+    }
+.--social-icon{
+    width: 35px;
+    height: 35px;
+    background: $main-color;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0rem .2rem;
+    cursor: pointer;
+    transition: .3s ease-in-out;
+    transition-property: background-color;
+
+    &:first-child{
+        margin-left: .5rem;
+    }
+    svg {
+      color: $light-color;
+    }
+    &:hover {
+        background: #ff8d8d;
+        border:1px solid $main-color;
+        & > svg {
+            color: $main-color;
+        }
+    }
+    & > i {
+        color: $light-color;
+    }
+}
+}
+
+#--product-text-details-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 518px;
+    button.--main-btn{
+        font-family: din;
+        font-weight: 600;
+    }
+}
+.image-zoom-result {
+    position: absolute;
+    z-index: 999999;
+    margin-left: 10px;
+    background-color: #FFFFFF;
+    background-repeat: no-repeat;
+    display: none;
+    height: 450px;
+    width: 450px;
+    left: 350px;
+    top: 0;
+}
+  .image-zoom-result{
+    margin-left: 2rem !important;
+  }
+  ngx-slick-carousel {
+    z-index: 3;
+  }
+    // remove zoom result in small screens.
+    @media (max-width: 991px){
+        .image-zoom-result{
+          display: none !important;
+        }
+      }
+
+#multi-image{
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+.--slider--image-container{
+    border: 1px solid #dae0e6;
+    border-radius: 10px;
+    overflow: hidden;
+    width: 135px;
+}
+.--img-container{
+    width: 100%;
+    padding-bottom: 100%;
+    background-size: cover;
+  }
+  
+#--zoom-container {
+    margin-bottom: 3rem;
+}
+// ==========================/////////////////////======================= //
+// @import '../../../../../assets/scss/mixins.scss';
+
+  .slider-nav .slick-slide{
+      width: 100px !important;
+  }
+  
+  div.product-image {
+    min-height: 518px;
+    background: #FFFFFF;
+    border: 1px solid #dae0e6;
+    border-radius: 10px;    
+
+    & > i {
+      position: absolute;
+      right: 14px;
+      top: 15px;
+      z-index: 10;
+    }
+  }
+  
+  .image-zoom-result{
+    margin-left: 8rem !important;
+      }
+
+  img.product-image {
+    padding: 0rem 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 97%;
+    max-width: 100% !important;
+  }
+  
+  .list-inline-block li {
+    margin-right: 5px;
+  }
+
+  // remove zoom result in small screens.
+  @media (max-width: 991px){
+    .image-zoom-result{
+      display: none !important;
+    }
+  }
+
+  // TAB
+  @media (min-width: 768px) and (max-width: 991px){
+    ngx-slick-carousel{
+      margin-bottom: -1.8rem;
+    }
+    .slider-nav .slick-slide.slick-active{
+      width: 230px !important;
+    }
+    .slider-nav .slick-slide{
+      width: 230px !important;
+    }
+
+    #mult-image{
+      margin-top: -1.5rem;
+    }
+
+    .product-right{
+      margin-top: -1rem;
+      h2{
+        font-size: 18px;
+      }
+      h3{
+        font-size: 20px;
+        margin: 0rem;
+      }
+    } 
+
+  }
+
+
+  //  START::  ============== >> >> REVIEW FORM << << ================
+#--form-review{
+  
+  #--review-stars-container {
+    display: flex;
+  }
+}  
+
+  //  END::  ============== >> >> REVIEW FORM << << ================

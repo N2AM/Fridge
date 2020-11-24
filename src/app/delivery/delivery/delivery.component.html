@@ -1,0 +1,59 @@
+<div class="container mt-5 mb-5 pl-3">
+  <div class="BreadCrumbs">
+    <nav>
+      <p><a routerLink="/cart"> <i class="fas fa-chevron-left" style="color: #f15758;"></i>&nbsp; Back To Cart </a></p>
+      <div class="col-lg-6">
+        <br>
+        <div class="row">
+          <div class="col-md-3"><span class="circle active">1</span>Shipping</div>
+          <div class="col-md-2"><hr class="divider activeDidiver"></div>
+          <div class="col-md-3"><span class="circle">2</span>Payment</div>
+          <div class="col-md-2"><hr class="divider"></div>
+          <div class="col-md-2"><span class="circle">3</span>Confirmation</div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5 pl-3">
+  <div class="row" style="margin: auto;">
+    <!--Left Box-->
+    <div class="col-lg-5 MainBox">
+      <div class="CartLeftContainer pl-5">
+        <p class="Header">Enter Your Delivery Time</p>
+        <form>
+          <select class="form-control">
+            <option selected disabled>Day</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+          </select>
+
+          <select class="form-control mt-4">
+            <option selected disabled>Time</option>
+            <option>Saturday</option>
+            <option>Sunday</option>
+            <option>Monday</option>
+            <option>Tuesday</option>
+            <option>Wednesday</option>
+            <option>Thursday</option>
+            <option>Friday</option>
+          </select>
+        </form>
+      </div>
+    </div>
+    <div class="offset-md-1"></div>
+    <!--Right Box-->
+    <div class="col-lg-5 MainBox">
+      <app-order-summary NextLink="/payment"></app-order-summary>
+    </div>
+
+  </div>
+</div>
+
+

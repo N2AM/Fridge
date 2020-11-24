@@ -1,0 +1,68 @@
+<div class="CategoryContainer ">
+  <!--Image Container-->
+  <div class="imageContainer"
+  style="background-image: url(/assets/img/category/category.png);">
+  </div> 
+  <!--Carousal Container-->
+  <div class="container-fluid CarousalContainer">
+    <div class="row w-100" 
+         style="position: relative; margin: 0 auto;">
+      <div class="MultiCarousel col-12 py-lg-5">
+        <h3 class="text-center mb-4 mt-0  --gilory-light" style="
+          font-weight: 100; 
+          text-transform: capitalize;
+          font-size: 55px;">Browse our category</h3>
+        <div class="">
+         <div class="container">
+          <div class="row">
+            <div class="col-12" style="padding: 0rem 5rem" id="--category-carousel">
+                <owl-carousel *ngIf="images"
+                [options]="carouselOptions"
+                [items]="images"
+                [carouselClasses]="['owl-theme', 'sliding']">
+                <div class="item" *ngFor="let item of images; let i = index">
+                  <div class="--slider--image-container">
+                    <!-- <img [src]="image"> -->
+                    <div class="--img-container cursor"
+                    [routerLink]="['/categories', item.id]  "
+                    [ngStyle]="{
+                      'background-image': 'url(' +item['images'][0]+ ')'
+                    }">
+                    </div>
+                  </div>
+                  <div class="--slider--image-details text-center">
+                    <h6 class="mb-0 mt-2 --gilory-bold">{{item.name}}</h6> 
+                    <a (click)="router.navigate(['/categories', item.id])" 
+                    class="--dineng-regular --main-color cursor"
+                    style="font-size: 20px;">
+                      Browse
+                    </a>
+                  </div>
+                  <!-- <div class="thumbnail-image" [ngStyle]="{'background': 'url(' + image + ')no-repeat scroll center center / 80px 80px'}"></div> -->
+                </div>
+                </owl-carousel>
+                
+            </div>
+          </div>
+         </div> 
+
+        </div>
+      </div>
+      <div id="--carousel-buttons">
+          <button id="--carousel-previous"
+          onclick="document.querySelector('#--category-carousel .owl-prev').click();"
+          >
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button id="--carousel-next"
+            onclick="document.querySelector('#--category-carousel .owl-next').click();"> 
+            <i class="fas fa-chevron-right"></i> 
+          </button>
+      </div>
+
+    </div>
+
+    
+  </div>
+</div>
+

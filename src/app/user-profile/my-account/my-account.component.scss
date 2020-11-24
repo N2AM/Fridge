@@ -1,0 +1,101 @@
+.container {
+  margin-bottom: 91px !important;
+}
+.BreadCrumbs {
+  margin-bottom: 62px;
+}
+.BreadCrumbs p {
+  font-size: 20px !important;
+  font-family: gilroy-light;
+  color: #657c92;
+  line-height: 20px;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+.info p {
+  font-family: gilroy;
+  font-size: 20px;
+  font-weight: 300;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1;
+  letter-spacing: normal;
+  text-align: left;
+  color: #657c92;
+  margin-top: 25px;
+}
+h3 {
+  font-family: din;
+  font-size: 28px;
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.18;
+  letter-spacing: normal;
+  text-align: left;
+  color: #f15758;
+}
+.col-sm-4 {
+  padding: 0;
+  font-family: gilroy;
+  font-size: 20px;
+  font-weight: 800;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: #657c92;
+}
+.user-info {
+  margin: 25px -33px;
+  background-color: #f8f4f3;
+  padding: 16px 32px;
+}
+.fa-chevron-right {
+  color: #f15758;
+}
+
+a {
+  color: #657c92;
+}
+
+.Order-item {
+  list-style-type: none;
+  color: #657c92;
+  font-size: 18px;
+}
+.Order-item .order-details {
+  text-align: left;
+}
+.read-more {
+  color: #f15758 !important;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+@media only screen and (max-width: 992px) {
+  .row-space {
+    display: block;
+  }
+  .col-lg-4 {
+    padding: 0 !important;
+  }
+}
+
+.AddToCard {
+  width: 165px;
+  background-color: #657c92;
+  color: #fef6c5;
+}
+.btn {
+  width: 165px !important;
+  margin: 15px;
+}
+.row button:parent {
+  float: right;
+}
+form {
+  width: 100%;
+}
+

@@ -1,0 +1,128 @@
+<!-- <div class="Background-container" style="position: relative;"> -->
+  <!-- <div class="overlay"></div> -->
+  <!-- <img class="img-fluid" [src]="/assets/img/background/background.png" alt="Background Image" > -->
+  <!-- Start Contact information div -->
+  <!-- <div class="Background-info">
+    <h1>SAVE MORE</h1>
+    <br>
+    <p class="mb-2"> 100% Fresh Grocery right to your Door  </p>
+    <p>
+      The Fresh Grocer is a supermarket chain based in Drexel Hill <br>
+      Pennsylvania that operates seven stores in Delaware, the Greater
+    </p>
+    <div class="col-12 mobile-service text-center">
+      <img src="/assets/img/google.png" class="col-sm-6 col-xs-12 p-4 btn" alt="google ad" />
+      <img src="/assets/img/AppStore.png" class="col-sm-6 col-xs-12 p-4 btn"  alt="ios ad" />
+    </div>
+  </div> -->
+  <!--End Contact Information Dic-->
+<!-- </div> -->
+
+<!-- 
+  <div *ngFor="let item of slider; let i = index">
+        <div class="carousel-item active" *ngIf="i == 0">
+          <img class="d-block w-100" [src]="item.mainImg" [alt]="item.mainText">
+        </div>
+        <div class="carousel-item" *ngIf="i > 0">
+            <img class="d-block w-100" [src]="item.mainImg" [alt]="item.mainText">
+          </div>
+      </div>
+ -->
+
+<!--  
+<div id="--main-carousel" 
+class="carousel slide d-flex flex-column justify-content-end" 
+data-ride="carousel" data-interval="false">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <div class="overlay"></div>
+          <img class="d-block w-100" [src]="slider[0]?.mainImg" [alt]="slider[0]?.mainText">
+          <div class="carousel-caption d-none d-md-block contianer">
+              <div class="row">
+                  <h1 class="col-12 text-center mb-4 upper--text">{{slider[0]?.upperText}}</h1>
+                  <br>
+                  <p class="col-12 text-center mt-3 meddle--text" > {{slider[0]?.mainText}}  </p>
+                  <div class="text-center col-6 offset-3">
+                    <a #androidApp hidden href="https://play.google.com/store/apps/details?id=com.pam.fridge"></a>
+                    <a #iosApp hidden href="https://itunes.apple.com/us/app/fridge-online-shopping/id1453660150?ls=1&mt=8"></a>
+                      <img src="/assets/img/google.png" (click)="androidApp.click()"
+                      class="col-sm-6 col-xs-12 p-0 my-1 btn cursor" alt="google ad" />
+                    <img src="/assets/img/AppStore.png" class="col-sm-6 col-xs-12 p-0 my-1 btn cursor" (click)="iosApp.click()"
+                     alt="ios ad"
+                     />
+                  </div>
+                </div>
+          </div>
+        </div>
+    <div class="carousel-item" *ngFor="let item of slider.slice(1, slider.length)">
+        <div class="overlay"></div>
+      <img class="d-block w-100" [src]="item.mainImg" [alt]="mainText">
+      <div class="carousel-caption d-none d-md-block contianer">
+          <div class="row">
+              <h1 class="col-12 mb-4 upper--text">{{item.upperText}}</h1>
+              <br>
+              <p class="col-12 mt-2 meddle--text"> {{item.mainText}}  </p>
+            </div>
+      </div>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#--main-carousel" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#--main-carousel" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div> -->
+
+<div class="--home-background" style="
+min-height: 650px; 
+width: 100%;
+">
+<!-- padding-right: 14px; -->
+    <owl-carousel
+    [options]="{
+      items: 1, 
+      dots: false, 
+      navigation: false, 
+      margin: 0,
+      mouseDrag: false,
+      autoplayHoverPause: false,
+      loop: true,
+      autoplay: true,
+      smartSpeed: 2000
+
+    }"
+         [items]="slider"
+         [carouselClasses]="['owl-theme', 'row', 'sliding']">
+         <div class="item" *ngFor="let item of slider;let i = index">
+             <div class="thumbnail-image" 
+             style=""
+             [ngStyle]="{
+               'background': 'url('+ item.mainImg +')no-repeat scroll center center',
+               'background-size': 'cover',
+               'min-height': '650px',
+               'min-width': '100vw'
+              }">
+              <div class="row --app-ios-andriod-container" *ngIf="i == 0">
+                  <h1 class="col-12 text-center mb-4 upper--text">{{slider[0]?.upperText}}</h1>
+                  <br>
+                  <p class="col-12 text-center mt-3 meddle--text" > {{slider[0]?.mainText}}  </p>
+                  <div class="text-center col-6 offset-3">
+                    <div class="row">
+                        <a #androidApp hidden href="https://play.google.com/store/apps/details?id=com.pam.fridge"></a>
+                        <a #iosApp hidden href="https://itunes.apple.com/us/app/fridge-online-shopping/id1453660150?ls=1&mt=8"></a>
+                          <img  style="object-fit: contain;" src="/assets/img/google.png" (click)="androidApp.click()"
+                          class="col-sm-6 col-xs-12 p-0 my-1 btn cursor" alt="google ad" />
+                        <img style="object-fit: contain;"  src="/assets/img/AppStore.png" class="col-sm-6 col-xs-12 p-0 my-1 btn cursor" (click)="iosApp.click()"
+                         alt="ios ad"
+                         />
+                    </div>
+                  </div>
+                </div>
+            </div>
+         </div>
+    
+    </owl-carousel>
+</div>

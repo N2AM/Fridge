@@ -1,0 +1,16 @@
+#--new-offers-container{
+    @media screen and (max-width: 320px) {
+        width: 100%;
+        padding: 0rem;
+        owl-carousel {
+            width: 100%;
+            & > .row {
+                margin: 0rem !important;
+            }
+        }
+
+        .CircleBox {
+            width: 100%;
+         }
+    }
+}

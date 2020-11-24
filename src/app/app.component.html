@@ -1,0 +1,13 @@
+<div class="page-wrapper">
+  <!-- <app-down-navbar></app-down-navbar> -->
+  <!-- class="--body-padding-for-fixed-navbar" -->
+  <div ngxUiLoaderBlurred blur="10" id="--app-root-container" >
+    <!--The content below is only a placeholder and can be replaced.-->
+    <app-header [RedNav]="RedNav"></app-header>
+    <router-outlet id="router-outlet" (activate)="onActive()"></router-outlet>
+    <div class="footer">
+      <app-footer></app-footer>
+    </div>
+  </div>
+  <ngx-ui-loader></ngx-ui-loader>
+</div>

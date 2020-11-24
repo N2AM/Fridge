@@ -1,0 +1,86 @@
+<div class="item">
+  <div *ngIf="product.favourite" class="feature">
+    <a (click)="removeFromWishlist(product)" title="remove from wishlist">
+      <!-- <i class="fas fa-heart"></i> -->
+      <div class="--filled-heart"></div>
+    </a>
+  </div>
+  <div *ngIf="!product.favourite" class="feature">
+    <a (click)="productService.addToWishlist(product)" title="add to wishlist">
+      <!-- <i class="far fa-heart"></i> -->
+      <div class="--border-heart"></div>
+    </a>
+  </div>
+  <div *ngIf="product.stock_qty < 1" class="feature_sold --dineng-regular">Sold</div>
+  <div class="pad15">
+    <div class="--product-img-details-container">
+      <a
+        (click)="linkClicked.emit()"
+        [routerLink]="['/product', product.id]"
+        style="text-decoration: none !important;"
+      >
+        <img
+          class="ItemImage"
+          [src]="productImage"
+        />
+        <!-- <img
+          *ngIf="!product.images"
+          class="ItemImage"
+          src="../../../assets/img/no-product.jpg"
+        /> -->
+      </a>
+      <div class="--product-text-details-container">
+        <p class=" lead p-0 details m-0" style="text-align: left;">
+          {{
+            product.name.length > 15
+              ? product.name.substr(0, 15)
+              : product.name
+          }}
+        </p>
+        <p class="lead p-0 details m-0" style="text-align: left;">
+          Weight: {{ product.weight }}
+        </p>
+        <p class="lead p-0 details m-0" style="text-align: left;">
+           {{ product.standard_rate }} EGP
+        </p>
+      </div>
+    </div>
+    <div class="--buttons-container mt-2">
+      <!-- <div id="--quantity-container" *ngIf="product.stock_qty > 0 && product.qty > 0" [hidden]="removeDiffer">
+        <button (click)="increaseProductQty(product)" class="--main-btn --grey-color">+</button>
+        <button (click)="decreaseProductQty(product)" class="--main-btn --grey-color">-</button>
+      </div> -->
+      <ng-template #addToCartButton>
+        <button
+          *ngIf="product.stock_qty > 0 && !product.qty"
+          class="btn --dineng-regular --main-btn --bg-main btn-block AddToCard"
+          (click)="addToCart(product)"
+        >
+          Add to Cart
+        </button>
+
+        <div
+          *ngIf="product.qty > 0"
+          id="--quantity-container"
+          class="btn "
+        >
+        <button (click)="decreaseProductQty(product)" class="--gilory-bold">
+          -
+        </button>
+          <span class="--gilory-bold">{{ product?.qty }}</span>
+          <button (click)="increaseProductQty(product)" class="--gilory-bold">
+            +
+          </button>
+         
+        </div>
+      </ng-template>
+      <button
+        *ngIf="product.stock_qty == 0; else addToCartButton"
+        class="btn --btn --bg-grey --light-color --dineng-regular btn-block AddToCard"
+        style="background-color: #426f9b;"
+      >
+        Notify
+      </button>
+    </div>
+  </div>
+</div>

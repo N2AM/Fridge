@@ -1,0 +1,91 @@
+.ProductOptions
+{
+  background-image: url("../../../assets/img/product-background/options.png");
+  height: 100%;
+}
+.overlay {
+  position: absolute; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.05); /* Black background with opacity */
+  z-index: 2;
+}
+.fa-chevron-right , .fa-chevron-up
+{
+  color: #f15758;
+}
+
+.ProductOptions
+{
+  padding: 0;
+  z-index: 5;
+  position: relative;
+}
+.Breadcrumb
+{
+  border-bottom: 1px solid #657c92;
+  padding-bottom: 10px !important;
+}
+.Breadcrumb a , .BrandHeader  , .SortByPrice
+{
+  font-family: Gilroy, serif;
+  color: #657c92 !important;
+  text-decoration: none;
+}
+.BrandHeader , .SortByPrice
+{
+  font-size: 20px;
+  font-weight: bolder;
+}
+.ListBrands
+{
+  list-style-type: none;
+  padding: 0;
+}
+.ListBrands li
+{
+  text-align: left !important;
+  padding: 5px 10px 0 0;
+  font-family: Gilroy, serif;
+  color: #657c92;
+}
+
+.divider
+{
+  border-color: #657c92;
+  border-width: 1px;
+}
+.PriceBox input
+{
+  color: #657c92;
+  font-size: 14px;
+  resize: none;
+  height: 70px;
+  width: 100%;
+  overflow: hidden;
+  padding: 0 0 0 10px;
+}
+.HeaderCat
+{
+  color: #f15758;
+  font-size: 22px;
+  font-weight: bolder;
+}
+.PNumber
+{
+  color: #657c92;
+  font-size: 18px;
+}
+.SelectSort
+{
+  border: 1px solid #f15758;
+  color: #f15758;
+  height: 57px;
+  position: relative;
+}
+

@@ -1,0 +1,242 @@
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div id="--close-btn" class="d-flex p-3 justify-content-between">
+        <h3>{{ data?.title }}</h3>
+        <button class="btn" mat-button mat-dialog-close #closeForm>
+          <!-- <i class="fas fa-times"></i> -->
+          Close
+        </button>
+        <!-- <i class="fa fa-close" ></i> -->
+      </div>
+
+      <div id="--dialog-content">
+        <div class="col-12">
+          <form
+            [formGroup]="cashForm"
+            id="--form-cash"
+            (ngSubmit)="AddNewAddress()"
+          >
+            <div class="row my-3">
+              <div class="form-group pb-2  col-12 col-md-6">
+                <input
+                  formControlName="city"
+                  type="text"
+                  class="form-control"
+                  placeholder="City"
+                  autocomplete="off"
+                />
+                <div
+                  class="error-messages"
+                  *ngIf="cashF.city.invalid && cashF.city.touched"
+                >
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.city.errors.required"
+                  >
+                    City is required.
+                  </div>
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.city.errors.maxlength"
+                  >
+                    City must be less than 60 chars.
+                  </div>
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.city.errors.pattern"
+                  >
+                    Only letters allowed.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group pb-2  col-12 col-md-6">
+                <input
+                  formControlName="street"
+                  type="text"
+                  class="form-control"
+                  placeholder="Street"
+                  autocomplete="off"
+                />
+                <div
+                  class="error-messages"
+                  *ngIf="cashF.street.invalid && cashF.street.touched"
+                >
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.street.errors.required"
+                  >
+                    Street is required.
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group pb-2  col-12 col-md-6">
+                <input
+                  formControlName="nearest_landmark"
+                  type="text"
+                  class="form-control"
+                  placeholder="Nearest Landmark"
+                  autocomplete="off"
+                />
+                <div
+                  class="error-messages"
+                  *ngIf="
+                    cashF.nearest_landmark.invalid &&
+                    cashF.nearest_landmark.touched
+                  "
+                >
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.nearest_landmark.errors.required"
+                  >
+                    Nearest Landmark is required.
+                  </div>
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.nearest_landmark.errors.maxlength"
+                  >
+                    Nearest Landmark must be less than 60 chars.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group pb-2  col-12 col-md-6">
+                <input
+                  formControlName="apartment_no"
+                  type="text"
+                  class="form-control"
+                  placeholder="Apartment Number"
+                  autocomplete="off"
+                />
+                <div
+                  class="error-messages"
+                  *ngIf="
+                    cashF.apartment_no.invalid && cashF.apartment_no.touched
+                  "
+                >
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.apartment_no.errors.required"
+                  >
+                    Apartment Number is required.
+                  </div>
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.apartment_no.errors.maxlength"
+                  >
+                    Apartment Number must be less than 5 chars.
+                  </div>
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.apartment_no.errors.maxlength"
+                  >
+                    Apartment Number must be less than 5 chars.
+                  </div>
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.apartment_no.errors.pattern"
+                  >
+                    Apartment Number must be with only numbers.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group pb-2  col-12 col-md-6">
+                <input
+                  formControlName="floor_no"
+                  type="text"
+                  class="form-control"
+                  placeholder="Floor Number"
+                  autocomplete="off"
+                />
+                <div
+                  class="error-messages"
+                  *ngIf="cashF.floor_no.invalid && cashF.floor_no.touched"
+                >
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.floor_no.errors.required"
+                  >
+                    Floor Number is required.
+                  </div>
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.floor_no.errors.maxlength"
+                  >
+                    Floor Number must be less than 5 chars.
+                  </div>
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.floor_no.errors.pattern"
+                  >
+                    Floor Number must be with only numbers.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group pb-2  col-12 col-md-6">
+                <input
+                  formControlName="building_no"
+                  type="text"
+                  class="form-control"
+                  placeholder="Building Number"
+                  autocomplete="off"
+                />
+                <div
+                  class="error-messages"
+                  *ngIf="cashF.building_no.invalid && cashF.building_no.touched"
+                >
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.building_no.errors.required"
+                  >
+                    Building Number is required.
+                  </div>
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.building_no.errors.maxlength"
+                  >
+                    Building Number must be less than 5 chars.
+                  </div>
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.apartment_no.errors.pattern"
+                  >
+                    Building Number must be with only numbers.
+                  </div>
+                </div>
+              </div>
+              <div class="form-group pb-2  col-12 col-md-12">
+                <select formControlName="district_id" class="form-control">
+                  <option value="" selected disabled
+                    >Select your District</option
+                  >
+                  <option
+                    *ngFor="let district of (districts$ | async)"
+                    [value]="district.id"
+                    >{{ district.name }}</option
+                  >
+                </select>
+                <div
+                  class="error-messages"
+                  *ngIf="cashF.district_id.invalid && cashF.district_id.touched"
+                >
+                  <div
+                    class="invalid-message"
+                    *ngIf="cashF.district_id.errors.required"
+                  >
+                    District is required.
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 btn-submit">
+                <button type="submit" class="--main-btn">Add</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

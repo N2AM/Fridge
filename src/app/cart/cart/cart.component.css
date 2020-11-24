@@ -1,0 +1,98 @@
+.BreadCrumbs p
+{
+  font-size: 18px !important;
+  font-family: Gilroy, serif;
+  color: #657c92;
+  margin-bottom: 0;
+}
+.fa-chevron-right
+{
+  color: #f15758;
+}
+a
+{
+  color: #657c92;
+}
+
+
+
+.CartLeftContainer, .CartRightContainer
+{
+  background-color: rgba(0, 0, 0, 0.02);
+  padding: 15px;
+  border-radius: 15px;
+}
+
+.checkBox
+{
+  width: 50px;
+  height: 20px;
+  vertical-align: sub;
+  color: #fff;
+}
+
+.options
+{
+  color: #f15758;
+  font-weight: 600;
+  font-size: 19px;
+}
+.CartLeftContainer .remove
+{
+  color: #657c92 ;
+  font-size: 16px;
+}
+.PInfo
+{
+  color: #657c92;
+  font-size: 14px;
+}
+.totalPrice , .unitPrice
+{
+  text-decoration: underline;
+  margin-bottom: 2px;
+}
+.PInfo .pname
+{
+  color: #f15758;
+  font-weight: bold;
+}
+
+.bottomPItem
+{
+  background-color: #f15758;
+  font-size: 22px;
+  font-weight: 600;
+  color: #fef6c5;
+}
+
+.summaryTag , .SummaryValue
+{
+  color: #657c92;
+}
+.SummaryValue
+{
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+#process
+{
+  color: #fef6c5 !important;
+  font-weight: 600;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  font-size: 18px;
+  margin-top: 150px !important;
+}
+#ContinueShopping
+{
+  font-weight: 600;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  font-size: 18px;
+}
+.CartLeftContainer
+{
+  height: 100%;
+}

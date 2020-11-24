@@ -1,0 +1,12 @@
+@import '../../../assets/scss/colors.scss';
+
+@media (max-width: 580px) {
+    #--down-menu-container {
+        background-color: $main-color;
+        height: 30px;
+        width: 100%;
+        position: fixed;
+        bottom:0px;
+        z-index: 9999999;
+    }
+}

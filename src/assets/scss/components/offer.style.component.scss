@@ -1,0 +1,25 @@
+#--new-offers-container {
+    
+    // previous and next arrows
+    .owl-nav {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(-50%, -50%);
+
+        button {
+            position: relative;
+            color: white !important;
+            border: none !important;
+            font-size: 2rem;
+            
+            &.owl-prev {
+                left: -177px;
+
+            }
+            &.owl-next {
+                right: -189px;
+            }
+        }
+    }
+}

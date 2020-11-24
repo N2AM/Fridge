@@ -1,0 +1,82 @@
+.BreadCrumbs p
+{
+  font-size: 18px !important;
+  font-family: Gilroy, serif;
+  color: #657c92;
+  margin-bottom: 0;
+}
+.fa-chevron-right
+{
+  color: #f15758;
+}
+a
+{
+  color: #657c92;
+}
+
+
+.CartLeftContainer
+{
+  background-color: rgba(0, 0, 0, 0.02);
+  padding: 15px;
+}
+
+.summaryTag , .SummaryValue
+{
+  color: #657c92;
+}
+.SummaryValue
+{
+  font-weight: bolder;
+  text-decoration: underline;
+}
+
+#process
+{
+  color: #fef6c5;
+  font-weight: 600;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  font-size: 18px;
+  margin-top: 150px !important;
+}
+#ContinueShopping
+{
+  font-weight: 600;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+  font-size: 18px;
+}
+.CartLeftContainer
+{
+  height: 100%;
+}
+
+.CartLeftContainer .Header
+{
+  color: #f15758;
+  font-size: 28px;
+}
+
+select
+{
+  border: 1px solid #657c92;
+  background: transparent;
+}
+
+.circle
+{
+  padding: 1px 8px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  margin-right: 10px;
+}
+.active {
+  background-color: #f15758 !important;
+  color: #fff;
+  border: none;
+}
+.activeDidiver
+{
+  border-color: #f15758;
+}

@@ -1,0 +1,58 @@
+<section class="--product-slider" [id]="id">
+    <div class="container">
+        <div class="row">
+          <div class="col-12" [ngClass]="{'--min-height-418-form-home-page': homePage}">
+            <div class="--heading my-3">
+              <h5 class="--headung__text --dineng-regular">{{heading}}</h5>
+            </div>
+              <owl-carousel 
+              *ngIf="(items)?.length > 0 else noProducts"
+              [options]="carouselOptions"
+              [items]="items"
+              [carouselClasses]="['owl-theme', 'sliding', '--owl-carousel']">
+                <div  *ngFor="let item of items; let i = index">
+                    <!-- <div class="--slider--image-container mb-2">
+                      <div class="--img-container"
+                      [ngStyle]="{
+                        'background-image': 'url(' +item['images'][0]+ ')'
+                      }">
+                      </div>
+                    </div>
+                    <div class="--slider--image-details">
+                      <h6 class="m-0" style="font-weight: 100">{{ item.name}}</h6> 
+                      <p class="mb-1">{{'EGP ' + item.standard_rate}}</p>
+                      <button 
+                      (click)="router.navigate(['/categories', item.id])">Add To Cart</button>
+                    </div> -->
+                  <app-product-item [product]="item" (linkClicked)="productClicked.emit()"></app-product-item>
+                </div>
+              <!-- <div class="--buttons-container">
+                  <button>prev</button>
+                </div> -->
+            
+              </owl-carousel>
+              <!-- <div class="--carousel-buttons">
+                  <button class="--carousel-previous"
+                  onclick="document.querySelector('.--product-slider .owl-prev').click();"
+                  >
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="--carousel-next"
+                    onclick="document.querySelector('.--product-slider .owl-next').click();"> 
+                    <i class="fas fa-chevron-right"></i> 
+                  </button>
+              </div> -->
+          </div>
+        </div>
+      </div>
+</section>
+
+<ng-template #noProducts>
+  <div class="--not-found-container">
+    <div class="--not-found-title">
+      <p class="--not-found-message text-center">
+        Sorry there's no Products for this section.
+      </p>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,26 @@
+.MainBox {
+  background: url("../../../assets/img/product-background/options.png")
+    no-repeat;
+  background-size: cover;
+  padding: 10px 0;
+}
+
+.CartLeftContainer {
+  background-color: rgba(0, 0, 0, 0.02);
+  padding: 15px;
+}
+
+.summaryTag,
+.SummaryValue {
+  color: #657c92;
+}
+.SummaryValue {
+  font-weight: 800;
+  text-decoration: underline;
+  font-variant-numeric: tabular-nums;
+}
+@media only screen and (max-width: 992px) {
+  .pl-5 {
+    padding-left: 0 !important;
+  }
+}

@@ -1,0 +1,208 @@
+<div class="container mt-5 mb-5 pl-3">
+  <div class="BreadCrumbs">
+    <nav>
+      <p><a routerLink="/cart"> <i class="fas fa-chevron-left" style="color: #f15758;"></i>&nbsp; Back To Cart </a></p>
+      <div class="col-lg-6">
+        <br>
+        <div class="row">
+          <div class="col-md-3"><span class="circle active">1</span>Shipping</div>
+          <div class="col-md-2"><hr class="divider activeDidiver"></div>
+          <div class="col-md-3"><span class="circle active">2</span>Payment</div>
+          <div class="col-md-2"><hr class="divider activeDidiver"></div>
+          <div class="col-md-2"><span class="circle">3</span>Confirmation</div>
+        </div>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<div class="container mt-5 mb-5 pl-3">
+  <div class="row" style="margin: auto;">
+    <!--Left Box-->
+    <div class="col-lg-5 MainBox">
+      <div class="CartLeftContainer pl-5">
+        <p class="Header">Select your Payment Method</p>
+        <form class="mb-5">
+          <div class="input-group" style="border: 1px solid #426f9b;border-radius: 5px;" >
+            <div class="input-group-prepend">
+              <div class="input-group-text" style="background: transparent;">
+                <input  
+                name="paymentMethod" 
+                type="radio" 
+                aria-label="Radio button for following text input"
+                (change)="paymentMethodChange($event)"
+                id="--credit-card"
+                >
+              </div>
+            </div>
+            <input type="text" disabled class="form-control Transparent" aria-label="Text input with radio button" value="Credit Or Debit Card">
+            <img src="../../../assets/img/payment/visa.png" style="position: absolute; right:10px;top: 8px;" >
+            <img src="../../../assets/img/payment/master.png" style="position: absolute; right:60px;top: 8px;" >
+          </div>
+          <br>
+          <div class="input-group" style="border: 1px solid #426f9b;border-radius: 5px;" >
+            <div class="input-group-prepend">
+              <div class="input-group-text" style="background: transparent;">
+                <input 
+                style="background: transparent;" 
+                name="paymentMethod" 
+                type="radio" 
+                aria-label="Radio button for following text input"
+                (change)="paymentMethodChange($event)"
+                id="--cash"
+                >
+              </div>
+            </div>
+            <input type="text" disabled class="form-control Transparent" aria-label="Text input with radio button" value="Cash on Delivery">
+          </div>
+
+
+          <div id="--cash-container" *ngIf="cash">
+            <form [formGroup]="cashForm" id="--form-cash" class="row">
+              <div class="col-12 --cash-field">
+                <input type="text" 
+                class="--cash-input form-control" 
+                placeholder="City"
+                formControlName="city"
+                >
+                <div class="--field-error-container" *ngIf="cashF['city'].touched && cashF['city'].errors">
+                  <p *ngIf="cashF['city'].errors.required">City is required.</p>
+                </div>
+              </div>
+
+              <div class="col-12 --cash-field">
+                <input type="text" 
+                class="--cash-input form-control" 
+                placeholder="Street Name"
+                formControlName="street-name"
+                >
+                <div class="--field-error-container" *ngIf="cashF['street-name'].touched && cashF['street-name'].errors">
+                  <!-- <p *ngIf="cashF['street-name'].errors.required">Street name is required.</p> -->
+                </div>
+              </div>
+
+              <div class="col-12 --cash-field">
+                <input type="text" 
+                class="--cash-input form-control" 
+                placeholder="Building number"
+                formControlName="building-number"
+                >
+                <div class="--field-error-container" *ngIf="cashF['building-number'].touched && cashF['building-number'].errors">
+                  <p *ngIf="cashF['building-number'].errors.required">Building Number Name is required.</p>
+                </div>
+              </div>
+
+              <div class="col-12 --cash-field">
+                <input type="text" 
+                class="--cash-input form-control" 
+                placeholder="Float Number"
+                formControlName="float-number"
+                >
+                <div class="--field-error-container" *ngIf="cashF['float-number'].touched && cashF['float-number'].errors">
+                  <p *ngIf="cashF['float-number'].errors.required">Float Number Name is required.</p>
+                </div>
+              </div>
+
+              <div class="col-12 --cash-field">
+                <input type="text" 
+                class="--cash-input form-control" 
+                placeholder="Flat Number"
+                formControlName="flat-number"
+                >
+                <div class="--field-error-container" *ngIf="cashF['flat-number'].touched && cashF['flat-number'].errors">
+                  <p *ngIf="cashF['flat-number'].errors.required">Flat Number Name is required.</p>
+                </div>
+              </div>
+
+              <div class="col-12 --cash-field">
+                <input type="text" 
+                class="--cash-input form-control" 
+                placeholder="Nearest Landmark"
+                formControlName="nearest-landmark"
+                >
+                <div class="--field-error-container" *ngIf="cashF['nearest-landmark'].touched && cashF['nearest-landmark'].errors">
+                  <p *ngIf="cashF['nearest-landmark'].errors.required">Nearest Landmark Name is required.</p>
+                </div>
+              </div>
+
+          </form>
+          </div>
+
+          <div id="--credit-card-container" *ngIf="credit">
+            <form [formGroup]="creditForm" id="--form-credit-card" class="row">
+                <div class="col-12 --credit-field">
+                  <input type="text" 
+                  class="--credit-input form-control" 
+                  placeholder="Card Number"
+                  formControlName="card-number"
+                  >
+                  <div class="--field-error-container" *ngIf="creditF['card-number'].touched && creditF['card-number'].errors">
+                    <p *ngIf="creditF['card-number'].errors.required">Card Number is required.</p>
+                  </div>
+                </div>
+
+                <div class="col-12 --credit-field">
+                  <input type="text" 
+                  class="--credit-input form-control" 
+                  placeholder="Expiry Date (MMYY)"
+                  formControlName="expiry-date"
+                  >
+                  <div class="--field-error-container" *ngIf="creditF['expiry-date'].touched && creditF['expiry-date'].errors">
+                    <p *ngIf="creditF['expiry-date'].errors.required">Expiry Date is required.</p>
+                  </div>
+                </div>
+
+                <div class="col-12 --credit-field">
+                  <input type="text" 
+                  class="--credit-input form-control" 
+                  placeholder="Card Holder Name"
+                  formControlName="card-holder-name"
+                  >
+                  <div class="--field-error-container" *ngIf="creditF['card-holder-name'].touched && creditF['card-holder-name'].errors">
+                    <p *ngIf="creditF['card-holder-name'].errors.required">Card Holder Name is required.</p>
+                  </div>
+                </div>
+
+                <div class="col-12 --credit-field">
+                  <input type="text" 
+                  class="--credit-input form-control" 
+                  placeholder="Security Code"
+                  formControlName="security-code"
+                  >
+                  <div class="--field-error-container" *ngIf="creditF['security-code'].touched && creditF['security-code'].errors">
+                    <p *ngIf="creditF['security-code'].errors.required">Security Code Name is required.</p>
+                  </div>
+                </div>
+            </form>
+          </div>
+        </form>
+        <p class="Header mt-5">Add your Promo Code</p>
+        <form>
+          <div class="input-group mb-3 pr-0 pl-3 row">
+            <input style="background-color: transparent; border-radius: 5px;border: 1px solid #426f9b;" 
+            type="text" 
+            class="form-control col-9" 
+            [(ngModel)]="promoCode"
+            #promo="ngModel"
+            name="promo-code"
+            placeholder="Enter Your Promo code" >
+            <div class="offset-1"></div>
+            <button class="btn btn-danger col-2"><i class="fas fa-check"></i></button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="offset-md-1"></div>
+    <!--Right Box-->
+    <div class="col-lg-5 MainBox text-center">
+      <app-order-summary NextLink="/checkout/payment">
+        <div>
+          <button (click)="checkout()" class="--main-btn --gilory-bold d-block w-100 mt-2">Pay Now</button>
+        </div>
+      </app-order-summary>
+    </div>
+
+  </div>
+</div>
+
+

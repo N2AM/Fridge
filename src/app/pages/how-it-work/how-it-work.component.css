@@ -1,0 +1,111 @@
+.background-Container
+{
+  background-image: url("/assets/img/howItWorks/howItWorks.png");
+  position: relative;
+  width: 100%;
+  /* height: 560px; */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding-bottom: 2rem;
+}
+
+.overlay{
+  position: absolute; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+  z-index: 2;
+}
+.description
+{
+  position: relative;
+  z-index: 3;
+  height: 100%;
+  font-family: 'Inconsolata', monospace;
+  color: #fff !important;
+  text-align: center;
+}
+.description h1
+{
+font-size: 60px;
+}
+.description .MainHeader
+{
+  margin-bottom: 50px;
+}
+.description .MainHeader:after
+{
+  content: " ";
+  border-bottom-style: solid;
+  border-bottom-width:1px;
+  display:block;
+  width:60%;
+  margin: auto;
+  margin-top: 10px;
+}
+.description .Box i
+{
+ font-size: 50px;
+}
+.description .Box p
+{
+  margin-top: 8px;
+  font-size: 15px;
+  font-weight: 300;
+}
+.steps .step
+{
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0rem;
+}
+.steps .step hr
+{
+  border-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 55%;
+  width: 80%;
+}
+.steps .step span{
+  border: 2px solid #fff;
+    border-radius: 50%;
+    font-weight: bolder;
+    font-size: 22px;
+    min-width: 40px;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .description h1
+    {
+      font-size: 40px !important;
+      padding: 0;
+    margin-bottom: 0;
+    }
+  .MainHeader
+  {
+    margin-bottom: 15px !important;
+  }
+  .Box
+  {
+    margin-bottom: 25px;
+  }
+  .background-Container
+  {
+    /* height: 900px; */
+  }
+}
+

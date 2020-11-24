@@ -1,0 +1,175 @@
+<div id="all-container">
+  <div class="container mt-5 mb-5 pl-3">
+    <div class="BreadCrumbs">
+      <nav>
+        <p><a routerLink="/">Home </a></p>
+        <p>
+          <a routerLink="/cart">
+            <i class="--next-indicator"></i> &nbsp;Cart
+          </a>
+        </p>
+      </nav>
+    </div>
+  </div>
+
+  <div
+    class="container mt-5 mb-5 pl-3"
+    id="--cart-details-container"
+    [ngClass]="{
+      'd-flex justify-content-center': !(cart?.products?.length > 0)
+    }"
+  >
+    <div class="row" *ngIf="cart?.products?.length > 0">
+      <!--Left Box-->
+      <div class="col-lg-12 MainBox">
+        <form
+          [formGroup]="removeForm"
+          class="w-100"
+          (ngSubmit)="
+            cart?.products?.length > 0
+              ? confirmDeletation()
+              : noItemsInCartDialog()
+          "
+        >
+          <div class="CartLeftContainer" *ngIf="cart?.products?.length">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="d-flex align-items-center">
+                <div Checkbox [id]="'--check-all'">
+                  <input
+                    id="--check-all"
+                    type="checkbox"
+                    class="checkBox"
+                    (click)="checkAllItems($event)"
+                    #checkAllBtn
+                  />
+                </div>
+                <label for="--check-all" class="d-inline ml-3"
+                  >Select All</label
+                >
+              </div>
+              <p class="options d-inline m-0 --gilory-bold">
+                Your Cart ({{ cart?.itemsQty }}) items
+              </p>
+              <button
+                type="submit"
+                class="float-right d-inline-block"
+                style="
+                  background: none;
+                  border: none;
+                  display: inline;
+                  outline: none;"
+              >
+                <span
+                  class="float-right remove d-flex align-items-center"
+                  style="font-size: 1.2rem;"
+                >
+                  <!-- <i class="far fa-trash-alt"></i> :: FONTAweSOME ICON  -->
+                  <i class="--trash-icon-svg mr-1"></i>
+                  Remove
+                </span>
+              </button>
+            </div>
+
+            <p *ngIf="removeOperationState.fail" class="--error-message">
+              {{ removeOperationState.error }}
+            </p>
+
+            <div
+              class="CatItemContainer row mt-3 mb-3 mr-2 pr-3"
+              *ngFor="let product of cart['products']"
+            >
+              <div class="col-2">
+                <!-- <app-checkbox [formControlName]="product['id'].toString()"></app-checkbox> -->
+                <div Checkbox *ngIf="product" [id]="product['id'].toString()">
+                  <input
+                    [id]="product['id'].toString()"
+                    type="checkbox"
+                    class="checkBox"
+                    formControlName="{{ product['id'].toString() }}"
+                  />
+                </div>
+              </div>
+              <div class="col-10 containerItem">
+                <div class="product">
+                  <div class="topPItem row">
+                    <div
+                      class="imageProduct col-6 p-0"
+                      [ngStyle]="{
+                        'background-image': product['images'][0]
+                          ? 'url(' + product['images'][0] + ')'
+                          : 'url(../../../assets/img/product%20Details/1.jpg)'
+                      }"
+                    >
+                      <!-- <img > -->
+                    </div>
+                    <div class="col-6 PInfo">
+                      <p class="pname --gilory-bold">
+                        {{
+                          product?.name.length > 20
+                            ? product?.name.substr(0, 20) + ".."
+                            : product?.name
+                        }}
+                      </p>
+                      <p class="totalPrice">{{ product["totalPrice"] }} EGP</p>
+                      <p class="unitPrice">
+                        Unit Price: {{ product?.standard_rate }}
+                      </p>
+                    </div>
+                  </div>
+                  <div class="bottomPItem row">
+                    <div
+                      class="col-2 cursor text-center"
+                      (click)="decreaseProductQty(product)"
+                    >
+                      <i class="--gilory-bold" style="font-style: normal;">
+                        -
+                      </i>
+                      <!-- <i class="fas fa-minus"></i> -->
+                    </div>
+                    <div class="col-8 text-center">
+                      <span class="--din-bold">
+                        {{ product?.qty }}
+                      </span>
+                    </div>
+                    <div
+                      class="col-2 cursor text-center"
+                      (click)="increaseProductQty(product)"
+                    >
+                      <i class="--gilory-bold" style="font-style: normal;">
+                        +
+                      </i>
+                      <!-- <i class="fas fa-plus"></i> -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="row">
+      <!-- <div class="offset-md-1"></div> -->
+
+      <!--Right Box-->
+      <div class="col-lg-12 MainBox">
+        <div class="CartRightContainer w-100">
+          <app-order-summary
+            *ngIf="cart?.products?.length > 0; else noItemsInCart"
+            [cart]="cart"
+          ></app-order-summary>
+        </div>
+      </div>
+
+      <ng-template #noItemsInCart>
+        <p
+          class="m-0 text-center --gilory-bold --main-color"
+          style="font-size: 1.2rem;"
+        >
+          There's no items in cart, Please add some.
+        </p>
+      </ng-template>
+    </div>
+  </div>
+</div>

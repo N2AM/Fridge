@@ -1,0 +1,217 @@
+/* Start Background Css*/
+.Background-container
+{
+  width: 100%;
+  height: 100%;
+}
+.Background-container .img-fluid
+{
+  width: 100%;
+  max-height: 100%;
+  background-size: cover;
+}
+.Background-info
+{
+  z-index: 2;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+}
+
+.Background-info h1
+{
+  font-weight: normal;
+  font-size: 5vw;
+  font-size-adjust: 0.58;
+  text-align: center;
+}
+.Background-info p
+{
+  text-align: center;
+  font-size: 18px;
+  color: #a3a0a0;
+}
+/* overlay */
+.overlay {
+  position: absolute; /* Sit on top of the page content */
+  display: block; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.6); /* Black background with opacity */
+  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+}
+
+/* Carousel Indicators */
+.carousel-control-next, .carousel-control-prev{
+  width: 6%;
+  bottom: unset;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/* Carousel Indicators */
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .Background-container .img-fluid
+  {
+    height: 400px;
+  }
+  .Background-info
+  {
+    top: 60%;
+  }
+  .Background-info h1
+  {
+    font-size: 4vw;
+  }
+  .Background-info p
+  {
+    font-size: 12px;
+  }
+  .mobile-service img
+  {
+    width: 120px !important;
+    padding: 1px !important;
+  }
+}
+/* Small devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 600px) {
+  .Background-info
+  {
+    top: 60%;
+  }
+  .Background-info h1
+  {
+    font-size: 4vw;
+  }
+  .Background-info p
+  {
+    font-size: 12px;
+  }
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .Background-container .img-fluid
+  {
+    height: 600px;
+  }
+  .Background-info
+  {
+    top: 50%;
+  }
+  .Background-info h1
+  {
+    font-size: 4vw;
+  }
+  .Background-info p
+  {
+    font-size: 12px;
+  }
+
+}
+/*All devices except large devices*/
+@media only screen and (max-width: 992px) {
+  .navbar
+  {
+    background: rgba(48, 48, 48, 0.9) !important;
+    z-index: 4 !important;
+  }
+  .navbar-nav .nav-item
+  {
+    padding-right: 0 !important;
+  }
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .Background-container .img-fluid
+  {
+    height: 700px;
+  }
+  .Background-info
+  {
+    top: 50%;
+  }
+  .Background-info h1
+  {
+    font-size: 5vw;
+  }
+  .Background-info p
+  {
+    font-size: 18px;
+  }
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+  .Background-info
+  {
+    top: 50%;
+  }
+}
+
+.loginButtonModal , .loginButtonModalFacebbok
+{
+  background-color: #f15758;
+  font-family: 'Inconsolata', monospace;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  font-weight: bolder;
+}
+.loginButtonModalFacebbok
+{
+  background-color: #365495 !important;
+}
+.LoginHelp
+{
+  color: #657c92;
+  font-size: 15px;
+}
+.RegisterModal
+{
+  color: #f15758 !important;
+  text-decoration: underline !important;
+  font-weight: bold !important;
+  cursor: pointer;
+}
+
+
+/* START ATEF CODE */
+@media (max-width: 991px){
+  #--main-carousel {
+    /* padding-top: 80px; */
+  }
+}
+.carousel-caption{
+  top: 50%;
+  transform:translateY(-50%);
+  bottom: unset;
+}
+
+.carousel-caption{
+  /* display: flex !important;
+  justify-content: center;
+  flex-direction: column; */
+}
+.upper--text{
+  font-size: 5.5rem;
+  text-transform: uppercase;
+  font-weight: 100;
+}
+
+.meddle--text{
+  font-size: 3rem;
+  text-transform: capitalize;
+  font-weight: 100;
+}
+
+a[class="carousel-control-prev"],
+a[class="carousel-control-next"]{
+  z-index: 10;
+}
+/* END ATEF CODE1 */

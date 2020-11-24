@@ -1,0 +1,473 @@
+<div class="container mt-5 mb-5 pl-3">
+  <div class="BreadCrumbs">
+    <nav>
+      <p><a routerLink="/">Home </a></p>
+      <p class="mt-1">
+        <a routerLink="/my-account">
+          <i class="--next-indicator small"></i> &nbsp;My Account
+        </a>
+      </p>
+    </nav>
+  </div>
+  <div class="info">
+    <h3>Account Information</h3>
+    <p>
+      Fridge share account details. Changes here to your name, email, phone
+      number, or password will also be reflected on Fridge.
+    </p>
+  </div>
+  <div *ngIf="!editUserInfo" class="row user-info">
+    <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+      <h4 class="Order-item row">
+        <span class="col-sm-4">Name: </span>
+        <span class="order-details col-sm-8" *ngIf="user">{{ user.name }}</span>
+      </h4>
+      <!-- <hr width="70%" class="d-block d-sm-none" /> -->
+      <h4 class="Order-item row">
+        <span class="col-sm-4">Email: </span>
+        <span class="order-details col-sm-8" *ngIf="user">{{
+          user.email
+        }}</span>
+      </h4>
+      <!-- <hr width="70%" class="d-block d-sm-none" /> -->
+      <h4 class="Order-item row">
+        <span class="col-sm-4">Password: </span>
+        <span class="order-details col-sm-8">********</span>
+      </h4>
+      <h4 class="Order-item row">
+        <span class="col-sm-4">Mobile No: </span>
+        <span class="order-details col-sm-8" *ngIf="user">
+          {{ user.phone | slice: 0:3 }}xxxxxxxx</span
+        >
+      </h4>
+    </div>
+    <div class="col-lg-4 col-md-2 col-sm-12 col-12">
+      <a class="text-danger read-more float-right" (click)="editInfo($event)">
+        Edit</a
+      >
+    </div>
+  </div>
+  <div *ngIf="editUserInfo" class="row user-info">
+    <form [formGroup]="userInfoForm" (ngSubmit)="editUserProfile($event)">
+      <div class="row">
+        <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="name"
+            type="text"
+            class="form-control"
+            placeholder="Name"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="infof.name.errors && infof.name.touched"
+          >
+            <div class="invalid-message" *ngIf="infof.name.errors.required">
+              First Name is required.
+            </div>
+            <div class="invalid-message" *ngIf="infof.name.errors.pattern">
+              Only Letters Allowed.
+            </div>
+            <div class="invalid-message" *ngIf="infof.name.errors.minlength">
+              First Name must be greater than 3 chars.
+            </div>
+            <div class="invalid-message" *ngIf="infof.name.errors.maxlength">
+              First Name must be less than 40 chars.
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="mobile"
+            type="text"
+            class="form-control"
+            placeholder="Mobile Number"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="infof.mobile.invalid && infof.mobile.touched"
+          >
+            <div class="invalid-message" *ngIf="infof.mobile.errors.required">
+              Mobile number is required.
+            </div>
+            <div class="invalid-message" *ngIf="infof.mobile.errors.minlength">
+              mobile must be at least 11 numbers.
+            </div>
+            <div class="invalid-message" *ngIf="infof.mobile.errors.maxlength">
+              mobile must be less than 11 numbers.
+            </div>
+            <div class="invalid-message" *ngIf="infof.mobile.errors.pattern">
+              mobile must be with only numbers.
+            </div>
+          </div>
+        </div>
+        <!-- <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="lastName"
+            type="text"
+            class="form-control"
+            placeholder="Last Name"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="infof.lastName.errors && infof.lastName.touched"
+          >
+            <div class="invalid-message" *ngIf="infof.lastName.errors.required">
+              Last Name is required.
+            </div>
+            <div class="invalid-message" *ngIf="infof.lastName.errors.pattern">
+              Only Letters Allowed.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="infof.lastName.errors.minlength"
+            >
+              Last Name must be greater than 3 chars.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="infof.lastName.errors.maxlength"
+            >
+              Last Name must be less than 40 chars.
+            </div>
+          </div>
+        </div> -->
+        <!-- <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="password"
+            type="password"
+            class="form-control"
+            placeholder="Password"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="infof.password.invalid && infof.password.touched"
+          >
+            <div class="invalid-message" *ngIf="infof.password.errors.required">
+              Password is required.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="infof.password.errors.minlength"
+            >
+              Password must be at least 8 chars.
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="confirmPassword"
+            type="password"
+            class="form-control"
+            placeholder="Confirm password"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="
+              infof.confirmPassword.invalid && infof.confirmPassword.touched
+            "
+          >
+            <div
+              class="invalid-message"
+              *ngIf="infof.confirmPassword.errors.required"
+            >
+              Confirm password is required.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="infof.confirmPassword.errors.minlength"
+            >
+              confirm password must be at least 8 chars.
+            </div>
+          </div>
+          <div
+            class="error-messages"
+            *ngIf="infof.confirmPassword.errors?.mustMatch"
+          >
+            <div class="invalid-message">
+              Passwords must match.
+            </div>
+          </div>
+        </div> -->
+      </div>
+      <div class="row flex-row-reverse">
+        <button
+          class="btn btn-danger"
+          [disabled]="userInfoForm.invalid"
+          type="submit"
+        >
+          Edit
+        </button>
+        <button class="btn AddToCard" (click)="cancelInfoEdit()">Cancle</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="!editUserAddress">
+    <div class="row-space">
+      <h3>Address Information</h3>
+      <button class="btn btn-block AddToCard" (click)="addNewAddress()">
+        Add New Address
+      </button>
+    </div>
+    <div *ngFor="let address of userAddresses" class="row user-info">
+      <div class="col-lg-8 col-md-12 col-sm-12 col-12">
+        <h4 *ngIf="address.street" class="Order-item row">
+          <span class="col-sm-4">Street: </span>
+          <span class="order-details col-sm-8" *ngIf="user">{{
+            address.street
+          }}</span>
+        </h4>
+        <!-- <hr width="70%" class="d-block d-sm-none" /> -->
+        <h4 *ngIf="address.nearest_landmark" class="Order-item row">
+          <span class="col-sm-4">Nearest Landmark: </span>
+          <span class="order-details col-sm-8" *ngIf="user">{{
+            address.nearest_landmark
+          }}</span>
+        </h4>
+        <!-- <hr width="70%" class="d-block d-sm-none" /> -->
+        <h4 *ngIf="address.city" class="Order-item row">
+          <span class="col-sm-4">City: </span>
+          <span class="order-details col-sm-8">{{ address.city }}</span>
+        </h4>
+      </div>
+      <div class="col-lg-4 col-md-2">
+        <a
+          class="text-danger read-more"
+          (click)="editAddressInfo($event, address.address_id)"
+        >
+          Edit</a
+        >
+        <a
+          class="text-danger read-more float-right"
+          (click)="deleteUserAddress($event, address.address_id)"
+        >
+          Delete</a
+        >
+      </div>
+    </div>
+  </div>
+  <div *ngIf="editUserAddress || addUserAddress" class="user-info">
+    <h3>
+      {{
+        addUserAddress ? "Add Address Information" : " Edit Address Information"
+      }}
+    </h3>
+    <form [formGroup]="useraddressForm" (ngSubmit)="editUserAddressInfo()">
+      <div class="row my-3">
+        <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="city"
+            type="text"
+            class="form-control"
+            placeholder="City"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="addressf.city.invalid && addressf.city.touched"
+          >
+            <div class="invalid-message" *ngIf="addressf.city.errors.required">
+              City is required.
+            </div>
+            <div class="invalid-message" *ngIf="addressf.city.errors.maxlength">
+              City must be less than 60 chars.
+            </div>
+            <div class="invalid-message" *ngIf="addressf.city.errors.pattern">
+              Only letters allowed.
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="street"
+            type="text"
+            class="form-control"
+            placeholder="Street"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="addressf.street.invalid && addressf.street.touched"
+          >
+            <div
+              class="invalid-message"
+              *ngIf="addressf.street.errors.required"
+            >
+              Street is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="nearest_landmark"
+            type="text"
+            class="form-control"
+            placeholder="Nearest Landmark"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="
+              addressf.nearest_landmark.invalid &&
+              addressf.nearest_landmark.touched
+            "
+          >
+            <div
+              class="invalid-message"
+              *ngIf="addressf.nearest_landmark.errors.required"
+            >
+              Nearest Landmark is required.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="addressf.nearest_landmark.errors.maxlength"
+            >
+              Nearest Landmark must be less than 60 chars.
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="apartment_no"
+            type="text"
+            class="form-control"
+            placeholder="Apartment Number"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="
+              addressf.apartment_no.invalid && addressf.apartment_no.touched
+            "
+          >
+            <div
+              class="invalid-message"
+              *ngIf="addressf.apartment_no.errors.required"
+            >
+              Apartment Number is required.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="addressf.apartment_no.errors.maxlength"
+            >
+              Apartment Number must be less than 5 chars.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="addressf.apartment_no.errors.maxlength"
+            >
+              Apartment Number must be less than 5 chars.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="addressf.apartment_no.errors.pattern"
+            >
+              Apartment Number must be with only numbers.
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="floor_no"
+            type="text"
+            class="form-control"
+            placeholder="Floor Number"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="addressf.floor_no.invalid && addressf.floor_no.touched"
+          >
+            <div
+              class="invalid-message"
+              *ngIf="addressf.floor_no.errors.required"
+            >
+              Floor Number is required.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="addressf.floor_no.errors.maxlength"
+            >
+              Floor Number must be less than 5 chars.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="addressf.floor_no.errors.pattern"
+            >
+              Floor Number must be with only numbers.
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-2  col-12 col-md-6">
+          <input
+            formControlName="building_no"
+            type="text"
+            class="form-control"
+            placeholder="Building Number"
+            autocomplete="off"
+          />
+          <div
+            class="error-messages"
+            *ngIf="addressf.building_no.invalid && addressf.building_no.touched"
+          >
+            <div
+              class="invalid-message"
+              *ngIf="addressf.building_no.errors.required"
+            >
+              Building Number is required.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="addressf.building_no.errors.maxlength"
+            >
+              Building Number must be less than 5 chars.
+            </div>
+            <div
+              class="invalid-message"
+              *ngIf="addressf.apartment_no.errors.pattern"
+            >
+              Building Number must be with only numbers.
+            </div>
+          </div>
+        </div>
+        <div class="form-group pb-2  col-12 col-md-12">
+          <select formControlName="district_id" class="form-control">
+            <option value="" selected disabled>Select your District</option>
+            <option *ngFor="let district of districts" [value]="district.id">{{
+              district.name
+            }}</option>
+          </select>
+          <div
+            class="error-messages"
+            *ngIf="addressf.district_id.invalid && addressf.district_id.touched"
+          >
+            <div
+              class="invalid-message"
+              *ngIf="addressf.district_id.errors.required"
+            >
+              District is required.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row flex-row-reverse">
+        <button
+          [disabled]="useraddressForm.invalid"
+          class="btn btn-danger btn-block RegisterButton"
+          (click)="editUserAddressInfo()"
+          type="submit"
+        >
+          {{ addUserAddress ? "Add" : " Edit" }}
+        </button>
+        <button class="btn btn-block AddToCard" (click)="cancelAddressEdit()">
+          Cancle
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
